@@ -1,0 +1,380 @@
+#cosmosDance {
+    padding-top: 0 !important;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+    display: block;
+}
+
+.section {
+    padding: 3rem 1.5rem;
+}
+
+.column {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75rem;
+}
+
+
+
+
+
+
+.is-fullhdMax {
+    position: relative;
+}
+
+
+.columns:last-child {
+    margin-bottom: -0.75rem;
+}
+
+.columns {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    margin-top: -0.75rem;
+}
+
+.slick-slider {
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -khtml-user-select: none;
+}
+
+.custom-arrow.slick-prev {
+    left: 0;
+    top: 50%;
+    transform: translate(20%, -50%);
+}
+
+.custom-arrow {
+    position: absolute;
+    z-index: 9;
+}
+
+.custom-arrow.slick-next {
+    right: 0;
+    top: 50%;
+    transform: translate(-20%, -50%);
+}
+
+.slick-track {
+    display: block;
+    left: 0;
+    position: relative;
+    top: 0;
+    transform: translateZ(0);
+}
+
+
+.slick-track:after,
+.slick-track:before {
+    content: "";
+    display: table;
+}
+
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+
+.slick-slide img {
+    display: block;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+img,
+video {
+    height: auto;
+    max-width: 100%;
+}
+
+.has-text-white {
+    color: #fff !important;
+}
+
+.slick-track:after {
+    clear: both;
+}
+
+.slick-track:after,
+.slick-track:before {
+    content: "";
+    display: table;
+}
+
+
+.slick-list {
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    transform: translateZ(0);
+}
+
+
+
+
+
+
+
+
+
+
+span {
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+.is-transparent-arrow {
+    background: transparent !important;
+    color: #fff !important;
+    opacity: .75;
+}
+
+.icon {
+    align-items: center;
+    display: inline-flex;
+    height: 1.5rem;
+    justify-content: center;
+    width: 1.5rem;
+}
+
+.icon {
+    -webkit-touch-callout: none;
+    cursor: inherit;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.icon.is-medium {
+    height: 2rem;
+    width: 2rem;
+}
+
+
+.custom-arrow .icon {
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 9999px;
+    color: #00d1b2;
+    cursor: pointer;
+    height: 48px;
+    outline: 0;
+    width: 48px;
+}
+
+
+
+
+.mdi-set,
+.mdi:before {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font: normal normal normal 32px/1 "Material Design Icons";
+    font-size: inherit;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: inherit;
+    text-rendering: auto;
+}
+
+
+.mdi-chevron-left:before {
+    content: "󰅁";
+}
+
+.custom-arrow .mdi-chevron-left:before {
+    content: "󰅁";
+}
+
+
+
+
+
+
+
+
+
+.cosmos-sub-title {
+    color: #fff;
+    font-family: "Jost";
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%;
+}
+
+
+.cosmos-sub-title,
+.is-size-3,
+.v2-content .cosmos2-sub-title {
+    font-size: 2rem !important;
+}
+
+
+.cosmos-content h3 {
+    font-size: 2rem;
+}
+
+
+.cosmos-content .cosmos-sub-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 1.7rem;
+}
+
+#cosmosDance_Content h3 {
+    margin-bottom: 1.25rem;
+    word-spacing: -0.125rem;
+}
+
+#cosmosDance_video {
+    margin-top: 2.5rem;
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 1408px) {
+    .section {
+        padding: 0;
+    }
+
+    #cosmosDance #cosmosDance_Content {
+        padding-left: 50px;
+    }
+
+    .cosmos-content {
+        min-height: 100%;
+    }
+
+    .cosmos-sub-title {
+        font-size: 2rem;
+    }
+
+    #cosmosDance_Content h3 {
+        margin-bottom: 2.5rem;
+        width: 110%;
+    }
+
+    #cosmosDance_video {
+        margin-top: 3.75rem;
+    }
+
+    #cosmosDance_video_player {
+        max-height: 300px;
+        max-width: 60%;
+        width: auto;
+    }
+
+}
+
+
+.cosmos-content p {
+    font-family: "Jost";
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 145%;
+}
+
+
+
+#cosmosDance_video .button {
+    background: none !important;
+    border: 0 !important;
+    bottom: 2.5rem;
+    box-shadow: none !important;
+    font-size: 1rem;
+    font-weight: 400;
+    left: 15px;
+    line-height: 145%;
+    outline: 0 !important;
+    position: absolute;
+    -webkit-text-decoration: none !important;
+    text-decoration: none !important;
+}
+
+
+#cosmosDance_video .button img {
+    margin-top: 1rem;
+    vertical-align: middle;
+}
+
+#cosmosDance_video .button .play-icon {
+    height: 2rem;
+    width: 2rem;
+}
+
+
+
+@media screen and (min-width: 1024px) {
+    .section {
+        padding: 3rem;
+    }
+
+    .columns.is-desktop {
+        display: flex;
+    }
+}
+
+
+
+@media print,
+screen and (min-width: 769px) {
+
+    .column.is-half,
+    .column.is-half-tablet {
+        flex: none;
+        width: 50%;
+    }
+
+
+}
+
+
+@media screen and (min-width: 1216px) {
+    .container:not {
+        max-width: 1152px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #cosmosDance .is-half {
+        width: 100%;
+    }
+}
