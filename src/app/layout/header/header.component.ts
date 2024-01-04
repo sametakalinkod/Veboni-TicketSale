@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  videoMuted: boolean = true;
   constructor() { }
 
   ngOnInit() {
   }
+
+
+  handleClick(): void {
+    this.videoMuted = !this.videoMuted;
+  }
+
 
 }

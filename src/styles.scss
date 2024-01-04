@@ -1,5 +1,583 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --animate-duration: 1s;
+    --animate-delay: 1s;
+    --animate-repeat: 1;
+}
+
 
 body {
     margin: 0 !important
+}
+
+body {
+    display: block;
+    background-color: #050619;
+    background-image: url(./assets/background/bg-cosmo.jpg);
+    background-position: top;
+    background-repeat: repeat-x;
+    font-family: "Jost", sans-serif;
+    max-width: 100% !important;
+    min-height: 100%;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+
+body {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: "Jost", sans-serif;
+}
+
+body {
+    background-position: top;
+    background-repeat: repeat-x;
+    background-size: cover;
+    font-family: "Jost", sans-serif;
+    max-width: 100% !important;
+    min-height: 100%;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+}
+
+.navbar {
+    background-color: transparent !important;
+    min-height: 0 !important;
+    min-height: auto !important;
+}
+
+.navbar-menu {
+    display: none;
+}
+
+
+.mx-auto {
+    margin-right: auto !important;
+}
+
+
+.topbar .right-side span {
+    font-weight: 400;
+    padding: 0 12px;
+}
+
+.btn-book-now span {
+    font-style: inherit;
+}
+
+span {
+    font-style: inherit;
+    font-weight: inherit;
+}
+
+
+
+
+.btn-book-now {
+    align-items: center !important;
+    background-color: #131927 !important;
+    border: 2px solid !important;
+    -o-border-image: linear-gradient(180deg, #8d29db, #05fff0) 1 !important;
+    border-image: linear-gradient(180deg, #8d29db, #05fff0) 1 !important;
+    color: #fff !important;
+    display: flex !important;
+    font-size: 1.125rem !important;
+    font-weight: 500;
+    height: 3.125rem;
+    line-height: 145% !important;
+    margin-left: 1.5625rem;
+    transition: border-image .25s ease-in, -o-border-image .25s ease-in;
+    width: -moz-min-content;
+    width: min-content;
+}
+
+.topbar .right-side {
+    align-items: center;
+    font-size: 1.125rem;
+    text-align: right;
+    width: 40%;
+}
+
+.is-flex {
+    display: flex !important;
+}
+
+.is-justify-content-end {
+    justify-content: end !important;
+}
+
+.topbar .right-side a {
+    border-right: 1px solid #fff;
+    color: #fff;
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 10px;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    width: -moz-max-content;
+    width: max-content;
+}
+
+
+.topbar .left-side a.navbar-item~:last-child {
+    border: none;
+}
+
+
+.nav-bar {
+    position: relative;
+    transition: all .3s ease-out;
+    width: 100%;
+    z-index: 99;
+}
+
+
+.topbar .left-side a.navbar-item {
+    background: none !important;
+    border-right: 1px solid #fff;
+    color: #fff;
+    padding: 0 15px;
+    -webkit-text-decoration: none !important;
+    text-decoration: none !important;
+}
+
+.topbar .left-side .navbar-item {
+    font-size: 1.125rem;
+    text-align: left;
+}
+
+.topbar .left-side .language-dropdown {
+    border-right: 1px solid #fff;
+    padding: 0 10px 0 0 !important;
+}
+
+.dropdown {
+    display: inline-flex;
+    position: relative;
+    vertical-align: top;
+}
+
+.topbar {
+    border-bottom: 1px solid #fff;
+    display: none;
+    padding-bottom: 1.3rem;
+    position: relative;
+}
+
+
+.navbar.link-menu {
+    display: none;
+    position: relative;
+}
+
+
+.navbar-item {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+
+.navbar-link,
+a.navbar-item {
+    cursor: pointer;
+}
+
+
+.seperator-menu {
+    color: #fff;
+    display: inline-block;
+    font-size: 1rem;
+    left: 1.125rem;
+    position: relative;
+}
+
+
+
+
+.top-bar {
+    border-bottom: 1px solid #fff;
+    display: none;
+    padding-bottom: 1.3rem;
+    position: relative;
+}
+
+
+.container {
+    flex-grow: 1;
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+}
+
+
+.navbar-burger {
+
+
+    appearance: none;
+    background: none;
+    border: none;
+    color: #4a4a4a;
+    cursor: pointer;
+    display: block;
+    height: 3.25rem;
+    margin-left: auto;
+    position: relative;
+    width: 3.25rem;
+}
+
+.dropdown-menu {
+    display: none;
+    left: 0;
+    min-width: 12rem;
+    padding-top: 4px;
+    position: absolute;
+    top: 100%;
+    z-index: 20;
+}
+
+
+.navbar-burger,
+blockquote,
+body,
+dd,
+dl,
+dt,
+fieldset,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+html,
+iframe,
+legend,
+li,
+ol,
+p,
+pre,
+textarea,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+.top-bar .left-side .language-dropdown {
+    border-right: 1px solid #fff;
+    padding: 0 10px 0 0 !important;
+}
+
+
+.dropdown-content {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0.5em 1em -0.125em hsla(0, 0%, 4%, .1), 0 0 0 1px hsla(0, 0%, 4%, .02);
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+
+.top-bar .left-side .language-dropdown .button.is-lang {
+    background: none !important;
+    border: 1px solid transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #fff !important;
+    font-size: 1.125rem;
+    height: 1.5rem !important;
+    padding: 0 !important;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.top-bar .left-side .language-dropdown .dropdown-menu {
+    min-width: 3rem !important;
+    text-align: center;
+}
+
+.topbar .left-side .navbar-item {
+    font-size: 1.125rem;
+    text-align: left;
+}
+
+.top-bar .left-side a.navbar-item {
+    background: none !important;
+    border-right: 1px solid #fff;
+    color: #fff;
+    padding: 0 15px;
+    -webkit-text-decoration: none !important;
+    text-decoration: none !important;
+}
+
+.svg-inline--fa,
+svg:not(:root).svg-inline--fa {
+    overflow: visible;
+}
+
+.svg-inline--fa.fa-w-14 {
+    width: 0.875em;
+}
+
+.svg-inline--fa {
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    vertical-align: -0.125em;
+}
+
+.top-bar .left-side a.navbar-item~:last-child {
+    border: none;
+}
+
+.mx-auto {
+    margin-right: auto !important;
+}
+
+
+.top-bar .right-side {
+    align-items: center;
+    font-size: 1.125rem;
+    text-align: right;
+    width: 40%;
+}
+
+
+.top-bar .right-side a {
+    border-right: 1px solid #fff;
+    color: #fff;
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 10px;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    width: -moz-max-content;
+    width: max-content;
+}
+
+.btn-book-now svg {
+    margin-left: 0.75rem;
+}
+
+.top-bar .right-side a span {
+    font-weight: 400;
+    padding: 0 12px;
+}
+
+.ml-auto,
+.mx-auto {
+    margin-left: auto !important;
+}
+
+@media screen and (min-width: 1024px) {
+    .top-bar:after {
+        animation: lightAnimation 5s;
+        -webkit-animation: lightAnimation 5s;
+        background-image: url(./assets/background/spark-line.png);
+        background-position: 50%;
+        background-repeat: no-repeat;
+        bottom: -85px;
+        content: "";
+        height: 170px;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+    }
+
+
+    .ct-navbar a {
+        font-size: 1.125rem;
+        line-height: 145%;
+        opacity: .85 !important;
+        transition: opacity .5s ease-in-out;
+    }
+
+    .top-bar .ct-amblem {
+        width: 6.25rem;
+    }
+
+    .navbar-item,
+    .navbar-link {
+        align-items: center;
+        display: flex;
+    }
+
+    .nav-bar {
+        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+        height: 10.625rem;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+    }
+
+    .navbar {
+        align-items: stretch;
+        display: flex;
+    }
+
+    .navbar-menu {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    .navbar-menu {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    .navbar-start {
+        justify-content: flex-start;
+        margin-right: auto;
+    }
+
+    .navbar,
+    .navbar-end,
+    .navbar-menu,
+    .navbar-start {
+        align-items: stretch;
+        display: flex;
+    }
+
+    .navbar-end {
+        justify-content: flex-end;
+        margin-left: auto;
+    }
+
+    .nav-bar a {
+        font-size: 1.125rem;
+        line-height: 145%;
+        opacity: .85 !important;
+        transition: opacity .5s ease-in-out;
+    }
+
+    .topbar .ct-amblem {
+        width: 6.25rem;
+    }
+
+    .topbar {
+        display: block;
+        top: 1.3rem;
+        z-index: 1;
+    }
+
+    .navbar.link-menu {
+        display: flex;
+        top: -20px;
+    }
+
+    .navbar-menu {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    .navbar.is-primary .navbar-end .navbar-link,
+    .navbar.is-primary .navbar-end>.navbar-item,
+    .navbar.is-primary .navbar-start .navbar-link,
+    .navbar.is-primary .navbar-start>.navbar-item {
+        color: #fff;
+    }
+
+    .navbar.link-menu a~:last-child {
+        border: none;
+        padding-left: 0.625rem;
+    }
+
+    .navbar.link-menu a {
+        align-items: center;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 145%;
+        padding: 0 1rem;
+    }
+
+    .nav-bar a {
+        font-size: 1.125rem;
+        line-height: 145%;
+        opacity: .85 !important;
+        transition: opacity .5s ease-in-out;
+    }
+
+
+    .top-bar {
+        display: block;
+        top: 1.3rem;
+        z-index: 1;
+    }
+
+    .top-bar .navbar-wrapper {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav-bar a {
+        font-size: 1.125rem;
+        line-height: 145%;
+        opacity: .85 !important;
+        transition: opacity .5s ease-in-out;
+    }
+
+    .navbar-burger {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 1408px) {
+    .container {
+        max-width: 1346px;
+    }
+}
+
+.nav-bar a {
+    font-size: 1.125rem;
+    line-height: 145%;
+    opacity: .85 !important;
+    transition: opacity .5s ease-in-out;
+}
+
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+
+.navbar.is-primary {
+    background-color: #00d1b2;
+    color: #fff;
+}
+
+
+.navbar.has-navbar-centered .navbar-start {
+    justify-content: center;
+    margin-left: auto;
+}
+
+.has-text-light {
+    color: #f5f5f5 !important;
+}
+
+
+a {
+    color: #00d1b2;
+    cursor: pointer;
+    -webkit-text-decoration: none;
+    text-decoration: none;
 }
