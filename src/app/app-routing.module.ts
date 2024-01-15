@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { EventPaymentComponent } from './modules/admin/event-payment/event-payment.component';
 import { InitialDataResolver } from './app.resolvers';
+import { BasketComponent } from './modules/admin/basket/basket.component';
 
 
 
@@ -21,8 +22,9 @@ const routes: Routes = [
   },
   { path: "", component: HeaderComponent },
   { path: "", component: FooterComponent },
-  { path: "eventdetails", component: EventDetailsComponent },
-  { path: "payment", component: EventPaymentComponent }
+  { path: "eventdetails/:id", component: EventDetailsComponent },
+  { path: "payment", component: EventPaymentComponent },
+  { path: "basket", component: BasketComponent }
 ];
 
 

@@ -46,7 +46,7 @@ export class InitialDataResolver implements Resolve<any>
             DomainType: Number(tokenInfo.DomainType)
         }
 
-        return 
+        return tokenInfo;
         // this._companyService.getHotelDefinition(model).toPromise().then((res) => {
 
 
@@ -54,7 +54,7 @@ export class InitialDataResolver implements Resolve<any>
         //         localStorage.removeItem("companyFactSheetDef");
         //     }
         //     localStorage.setItem("companyFactSheetDef", JSON.stringify(res.data));
- 
+
         // });
     }
 

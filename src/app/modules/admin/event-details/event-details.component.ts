@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EventDetailsComponent implements OnInit {
   selectedRecId: string | null = '';
+
+
   constructor(
     private _route: ActivatedRoute,
 
@@ -17,6 +19,7 @@ export class EventDetailsComponent implements OnInit {
   ngOnInit() {
     this._route.paramMap.subscribe((paramMap) => {
       console.log(paramMap);
+      debugger
       if (paramMap.has('id')) {
         const guids = paramMap.get('id');
         this.selectedRecId = guids ? atob(guids) : null;

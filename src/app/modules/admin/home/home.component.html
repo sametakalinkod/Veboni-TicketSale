@@ -540,11 +540,13 @@
         </div>
         <div class="container-fluid">
           <div class="slick-indent">
+
             <!--js-init-slick -->
             <div class="js-slick01 slick-dots01 slick-initialized slick-slider slick-dotted">
               <div class="slick-list draggable">
                 <div class="slick-track" style="opacity: 1; width: 5200px; transform: translate3d(-1035px, 0px, 0px);">
                   <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
+                    *ngFor="let _ of [].constructor(staticCount); let guestIndx = index"
                     aria-describedby="slick-slide-control02" style="width: 207px;" data-slick-index="13"
                     aria-hidden="true">
                     <div class="event-item">
@@ -557,11 +559,11 @@
                           alt="LE PETİT CHEF">
                       </div>
                       <div class="event-item__layout">
-                        <a href="/etkinlik/436/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
+                        <a href="/eventdetails/evetd" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
                       </div>
                     </div>
                   </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
+                  <!-- <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
                     aria-describedby="slick-slide-control02" style="width: 207px;" data-slick-index="-5"
                     aria-hidden="true">
                     <div class="event-item">
@@ -943,7 +945,7 @@
                         <a href="/etkinlik/439/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <ul class="slick-dots" role="tablist" style="">
@@ -1017,7 +1019,7 @@
       </div>
       <div>
 
-        <div class="tickets-wide " data-id="431">
+        <div class="tickets-wide " data-id="431" *ngFor="let _ of [].constructor(staticCount); let guestIndx = index">
           <div class="tickets-wide__item">
             <div class="tickets-wide__img"><img
                 src="https://panel.cosmosticket.net//upload/activity/20231230114015401.jpg" alt=""></div>
@@ -1040,7 +1042,7 @@
             </div>
           </div>
         </div>
-        <div class="tickets-wide " data-id="431">
+        <!-- <div class="tickets-wide " data-id="431">
           <div class="tickets-wide__item">
             <div class="tickets-wide__img"><img
                 src="https://panel.cosmosticket.net//upload/activity/20231230114015401.jpg" alt=""></div>
@@ -1369,7 +1371,7 @@
               <a href="/etkinlik/425/kucuk-prens" class="tt-btn-default"><span>DETAILS</span></a>
             </div>
           </div>
-        </div>
+        </div> -->
 
 
       </div>

@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  onSlideChange($event: Event) {
+    throw new Error('Method not implemented.');
+  }
   @ViewChild('cosmosDance_video_player') videoPlayer: ElementRef | undefined;
   pauseMainPageVid: boolean = true;
   videoMuted: boolean = true;
@@ -14,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   //loop static
   staticCount = 20;
+  slidesEx: any;
 
 
   constructor(
@@ -46,7 +50,7 @@ export class HomeComponent implements OnInit {
     const encodedGuid = btoa(selectedEvent);
 
     const url = this._router.serializeUrl(
-      this._router.createUrlTree([`/eventsale/${encodedGuid}`])
+      this._router.createUrlTree([`/eventdetails/${encodedGuid}`])
     );
     //open different page
     // window.open(url, '_blank');

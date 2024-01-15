@@ -56,12 +56,13 @@ export class HttpService {
 
     }
 
-    signIn(url: string, model: any): Observable<any> {
+    signIn(url: string, domain: string): Observable<any> {
         const body = new HttpParams()
-            .set('grant_type', 'password')
-            .set('username', model.userName)
-            .set('password', model.password)
-            .set('client_id', 'adminclient')
+            .set('grant_type', 'delegation')
+            // .set('username', model.userName)
+            // .set('password', model.password)
+            .set("domain", domain)
+            .set('client_id', 'onlinereservation')
             // .set('scope', model.scope)
             .set('client_secret', 'secret');
 

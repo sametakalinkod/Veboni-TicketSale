@@ -194,6 +194,14 @@
               </div>
             </div>
           </div>
+          <div class="tt-obj tt-obj-basket">
+            <div class="buttons" *ngIf="basketItems.length > 0">
+              <button mat-icon-button class="toggle-menu-button" (click)="navigateToBasket()" id="custom-basket-icon"
+                [matBadge]="basketItems.length">
+                <mat-icon id="icon">shopping_basket</mat-icon>
+              </button>
+            </div>
+          </div>
           <div class="tt-obj tt-obj-toggle">
             <a href="#" class="tt-menu-toggle icon-menu icon-menu-toggle"></a>
           </div>

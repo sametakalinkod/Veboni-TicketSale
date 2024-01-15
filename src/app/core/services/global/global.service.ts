@@ -3,6 +3,9 @@ import { Observable, Subject } from 'rxjs';
 import { StorageDto } from '../../models/localStorage/storageDto';
 import { HttpService } from '../auth/Http.service';
 import { jwtDecode } from 'jwt-decode';
+import { SweetalertType } from 'src/app/common/enums/SweetalertType.enum';
+import { SweetAlertDto } from 'src/app/common/models/SweetAlertDto';
+import Swal, { SweetAlertResult } from 'sweetalert2';
 
 
 @Injectable({
@@ -29,6 +32,52 @@ export class GlobalService {
   }
   getClickEvent(): Observable<any> {
     return this.subject.asObservable();
+  }
+
+
+
+  static sweetAlert(model: SweetAlertDto): void {
+    const sweetIcon = this.convertToSweetAlertIconType(model.icon);
+    Swal.fire({
+      title: model.title,
+      text: model.text,
+      icon: sweetIcon,
+      confirmButtonText: 'Ok',
+    });
+  }
+  static sweetAlertHtml(model: SweetAlertDto): void {
+    const sweetIcon = this.convertToSweetAlertIconType(model.icon);
+    Swal.fire({
+      title: model.title,
+      html: model.text,
+      icon: sweetIcon,
+      confirmButtonText: 'Ok',
+    });
+  }
+  static sweetAlertOk(model: SweetAlertDto): Promise<SweetAlertResult<any>> {
+    const sweetIcon = this.convertToSweetAlertIconType(model.icon);
+    return Swal.fire({
+      title: model.title,
+      html: model.text,
+      icon: sweetIcon,
+      confirmButtonText: 'Ok',
+    });
+  }
+  static convertToSweetAlertIconType(sweetType: SweetalertType): any {
+    switch (sweetType) {
+      case SweetalertType.success:
+        return 'success';
+      case SweetalertType.error:
+        return 'error';
+      case SweetalertType.info:
+        return 'info';
+      case SweetalertType.question:
+        return 'question';
+      case SweetalertType.warning:
+        return 'warning';
+      default:
+        return 'success';
+    }
   }
 
   //   static getSelectedLanguageCode(): string {
