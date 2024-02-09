@@ -28,14 +28,14 @@ export class EventMainResPaymentComponent implements OnInit {
 
   addBasket(): void {
     this._cookieService.setCookie("basketEvents", JSON.stringify(this.basketItemDetails), 7);
-    const dialog = this._dialog.open(EventDetailsBasketComponent, {
-      disableClose: false,
-      data: null
-    }).afterClosed().subscribe((err) => {
-      if (err.status) {
-        //this.filtersClick();
-      }
-    });
+    // const dialog = this._dialog.open(EventDetailsBasketComponent, {
+    //   disableClose: false,
+    //   data: null
+    // }).afterClosed().subscribe((err) => {
+    //   if (err.status) {
+    //     //this.filtersClick();
+    //   }
+    // });
 
   }
 

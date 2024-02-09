@@ -102,6 +102,7 @@ export class BasketComponent implements OnInit {
   }
 
   paymentProcessContinue(): void {
+    debugger
     if (!this.paymentForm.valid && this.paymentProcess) {
       const sweetAlertDto = new SweetAlertDto(
         this.translate('sweetalert.error'),
@@ -240,7 +241,7 @@ export class BasketComponent implements OnInit {
       this.bin?.alias ?? '',
       '1',
       this.selectedECollections.selectedVirtualPosId,
-      'ec91a96c-6053-4848-ac65-3500f676533c',//this.selectedECollections.recId,
+      '59e67dc5-4729-43fb-9f4d-0c4361019972',//this.selectedECollections.recId,
       '9ce469ff-da71-4132-af4a-96868794ebfa',//this.selectedECollections.propertyId,
       '5fbfb39a-7fd3-47ff-80cc-bdd3bceb7718',//this.tenantId,
       true,
