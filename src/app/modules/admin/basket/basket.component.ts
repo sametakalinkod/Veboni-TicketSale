@@ -13,6 +13,8 @@ import { PaymentDetailDto } from './models/PaymentDetailDto';
 import { PayECollectionDto } from './models/PayECollectionDto';
 import { formatDate } from '@angular/common';
 import { CreditCardDto } from './models/CreditCardDto';
+import { Router } from '@angular/router';
+import { CookieService } from 'src/app/core/services/global/cookie.service';
 
 @Component({
   selector: 'app-basket',
@@ -71,10 +73,17 @@ export class BasketComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     //private _translocoService: TranslocoService,
-    private _paymentService: PaymentService
+    private _paymentService: PaymentService,
+    private _router: Router,
+    private _cookieService: CookieService
   ) { }
 
   ngOnInit(): void {
+    this._cookieService.subscribeToCookieChanges().subscribe((newCookieValue: string) => {
+      // Handle the event in the header component
+      this.updateHeader(newCookieValue);
+    });
+
     this.paymentForm = this._formBuilder.group({
       name: ['Samet'],
       lastname: ['Akalin'],
@@ -289,6 +298,15 @@ export class BasketComponent implements OnInit {
   removeItem() {
     // Add logic to remove the item here
     console.log('Item removed!');
+    this._cookieService.deleteCookie('basketEvents');
+
+    this._router.navigate(['/']);
+  }
+
+
+  updateHeader(newCookieValue: string): void {
+    // Your logic to update the header
+    console.log('Header updated with new cookie value:', newCookieValue);
   }
 
 }
