@@ -50,8 +50,8 @@
                                 <div class="m-basket__variantionName -mobileHide">
                                   Yetişkin:
                                 </div>
-                                <div class="m-select -small"><select id="quantitySelect0-key-0"
-                                    class="a-selectControl -small">
+                                <div class="m-select -small"><select #quantitySelect id="quantitySelect0-key-0"
+                                    (change)="onQuantityChange(quantitySelect.value)" class="a-selectControl -small">
                                     <option value="1">
                                       1 adet
                                       <!---->
@@ -255,7 +255,8 @@
                         </div>
                         <div class="m-basket__options">
                           <div class="m-basket__optionsItem">
-                            <button id="removeCartItemBtn0-key-0" type="button" class="m-basket__remove">
+                            <button id="removeCartItemBtn0-key-0" type="button" class="m-basket__remove"
+                              (click)="removeItem()">
                               <mat-icon id="delete-icon">delete</mat-icon>Sil
                             </button>
                           </div>
@@ -401,21 +402,26 @@
                 <div class="m-orderSummary__body">
                   <ul class="m-orderSummary__calculate">
                     <li class="m-orderSummary__item"><span class="m-orderSummary__name">Toplam Tutar (KDV Dahil)</span>
-                      <span class="m-orderSummary__value">2.250,00 TL</span>
+                      <span class="m-orderSummary__value">{{ calculateTotalPrice(2500) |
+                        currency:'':'':'1.2-2'}} TL</span>
                     </li>
                     <li class="m-orderSummary__item -arrowUp"><span class="m-orderSummary__name">Toplam İndirim
-                        Tutarı</span> <span class="m-orderSummary__value">-250,00 TL</span></li>
+                        Tutarı</span> <span class="m-orderSummary__value">{{ calculateTotalPrice(-250) |
+                        currency:'':'':'1.2-2'}} TL</span></li>
                     <li class="subList">
                       <ul>
 
                         <li class="m-orderSummary__item -last"><span class="m-orderSummary__name">Kampanya
-                            İndirimi</span> <span class="m-orderSummary__value">-250,00 TL</span></li>
+                            İndirimi</span> <span class="m-orderSummary__value">{{ calculateTotalPrice(-250) |
+                            currency:'':'':'1.2-2'}} TL</span></li>
                       </ul>
                     </li>
 
                     <li class="m-orderSummary__item -grandTotal"><span class="m-orderSummary__name">Ödenecek
                         Tutar</span> <span class="m-orderSummary__value"
-                        ins-init-condition="#Li1ncmFuZFRvdGFsIC5tLW9yZGVyU3VtbWFyeV9fdmFsdWUsICNlbXR5Q2FydA==">2.250,00
+                        ins-init-condition="#Li1ncmFuZFRvdGFsIC5tLW9yZGVyU3VtbWFyeV9fdmFsdWUsICNlbXR5Q2FydA==">{{
+                        calculateTotalPrice(2250) |
+                        currency:'':'':'1.2-2'}}
                         TL</span></li>
                   </ul>
                 </div>

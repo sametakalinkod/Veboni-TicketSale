@@ -67,6 +67,7 @@ export class BasketComponent implements OnInit {
   selectedECollections: ECollectionReviewDto = new ECollectionReviewDto();
   totalPrice: number = 0;
   paymentLink!: string;
+  selectedValue: string = '1';
   constructor(
     private _formBuilder: FormBuilder,
     //private _translocoService: TranslocoService,
@@ -81,11 +82,11 @@ export class BasketComponent implements OnInit {
       email: ['samet.akalin@kod.com.tr'],
       phone: ['5000000000'],
       savenexttime: [true],
-      cardname: ['', Validators.required],
-      cardnumber: ['', Validators.required],
-      month: [''],
-      year: [''],
-      cvc: ['']
+      cardname: ['Samet Akalın ', Validators.required],
+      cardnumber: ['6501617086510197', Validators.required],
+      month: ['02'],
+      year: ['2029'],
+      cvc: ['609']
     });
 
 
@@ -275,6 +276,19 @@ export class BasketComponent implements OnInit {
         GlobalService.sweetAlert(sweetAlertDto);
       }
     });
+  }
+  onQuantityChange(selectedValue: string) {
+    console.log('Selected value:', selectedValue);
+    this.selectedValue = selectedValue;
+    // You can perform further actions here based on the selected value
+  }
+  calculateTotalPrice(totalPrice: number): number {
+    return totalPrice * parseInt(this.selectedValue, 10);
+  }
+
+  removeItem() {
+    // Add logic to remove the item here
+    console.log('Item removed!');
   }
 
 }
