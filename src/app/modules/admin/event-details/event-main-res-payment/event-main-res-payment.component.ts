@@ -32,7 +32,7 @@ export class EventMainResPaymentComponent implements OnInit {
   addBasket(): void {
     this._cookieService.setCookie("basketEvents", JSON.stringify(this.basketItemDetails), 7);
     const sweetAlertDto = new SweetAlertDto(
-      'Başarılı',
+      'Sepete Eklendi!',
       '',
       SweetalertType.success
     );
