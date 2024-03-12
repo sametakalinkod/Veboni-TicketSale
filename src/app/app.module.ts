@@ -17,7 +17,6 @@ import { TranslocoRootModule } from './common/modules/transloco/transloco-root.m
 import { MaterialModule } from './common/modules/material.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { TranslocoModule } from '@ngneat/transloco/lib/transloco.module';
-import { register } from 'swiper/element/bundle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';

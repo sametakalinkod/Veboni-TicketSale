@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'src/app/core/services/global/cookie.service';
-import { EventDetailsBasketComponent } from '../dialogs/event-details-basket/event-details-basket.component';
 import { SweetalertType } from 'src/app/common/enums/SweetalertType.enum';
 import { SweetAlertDto } from 'src/app/common/models/SweetAlertDto';
 import { GlobalService } from 'src/app/core/services/global/global.service';
