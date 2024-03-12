@@ -546,12 +546,13 @@
               <div class="slick-list draggable">
                 <div class="slick-track" style="opacity: 1; width: 5200px; transform: translate3d(-1035px, 0px, 0px);">
                   <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
-                    *ngFor="let _ of [].constructor(staticCount); let guestIndx = index"
+                    *ngFor="let  item of productsListByDate; let guestIndx = index"
                     aria-describedby="slick-slide-control02" style="width: 207px;" data-slick-index="13"
                     aria-hidden="true">
                     <div class="event-item">
                       <div class="event-item__label">
-                        13 <span alt="Jan">Jan</span>
+                        {{ item.date | date:'dd' }}
+                        <span alt="Jan">{{ item.date | date:'MMM' | uppercase }}</span>
                       </div>
                       <div class="event-item__img">
 
@@ -563,389 +564,7 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
-                    aria-describedby="slick-slide-control02" style="width: 207px;" data-slick-index="-5"
-                    aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        13 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
 
-                        <img src="https://panel.cosmosticket.net//upload/activity/202412171353339.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/436/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel" style="width: 207px;"
-                    data-slick-index="-4" aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        14 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/20231225145337262.jpg"
-                          alt="Küçük Prens">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/423/kucuk-prens" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
-                    aria-describedby="slick-slide-control03" style="width: 207px;" data-slick-index="-3"
-                    aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        14 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/20241217346868.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/437/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel" style="width: 207px;"
-                    data-slick-index="-2" aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        17 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/202413112810886.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/440/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
-                    aria-describedby="slick-slide-control04" style="width: 207px;" data-slick-index="-1"
-                    aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        18 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/202413104456880.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/439/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-current slick-active" tabindex="0" role="tabpanel" id="slick-slide00"
-                    aria-describedby="slick-slide-control00" style="width: 207px;" data-slick-index="0"
-                    aria-hidden="false">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        7 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/20231230114015401.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/431/le-petit-chef" class="tt-btn" tabindex="0"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-active" tabindex="0" role="tabpanel" id="slick-slide01"
-                    style="width: 207px;" data-slick-index="1" aria-hidden="false">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        10 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/2023123014645389.jpg"
-                          alt="DÜNYA'NIN EN KÜÇÜK ŞEFİ">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/432/dunyanin-en-kucuk-sefi" class="tt-btn"
-                          tabindex="0"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-active" tabindex="0" role="tabpanel" id="slick-slide02"
-                    aria-describedby="slick-slide-control01" style="width: 207px;" data-slick-index="2"
-                    aria-hidden="false">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        11 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/20241211252448.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/434/le-petit-chef" class="tt-btn" tabindex="0"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-active" tabindex="0" role="tabpanel" id="slick-slide03"
-                    style="width: 207px;" data-slick-index="3" aria-hidden="false">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        12 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/202412171646410.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/435/le-petit-chef" class="tt-btn" tabindex="0"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-active" tabindex="0" role="tabpanel" id="slick-slide04"
-                    aria-describedby="slick-slide-control02" style="width: 207px;" data-slick-index="4"
-                    aria-hidden="false">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        13 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/202412171353339.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/436/le-petit-chef" class="tt-btn" tabindex="0"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide" tabindex="-1" role="tabpanel" id="slick-slide05" style="width: 207px;"
-                    data-slick-index="5" aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        14 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/20231225145337262.jpg"
-                          alt="Küçük Prens">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/423/kucuk-prens" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide" tabindex="-1" role="tabpanel" id="slick-slide06"
-                    aria-describedby="slick-slide-control03" style="width: 207px;" data-slick-index="6"
-                    aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        14 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/20241217346868.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/437/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide" tabindex="-1" role="tabpanel" id="slick-slide07" style="width: 207px;"
-                    data-slick-index="7" aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        17 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/202413112810886.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/440/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide" tabindex="-1" role="tabpanel" id="slick-slide08"
-                    aria-describedby="slick-slide-control04" style="width: 207px;" data-slick-index="8"
-                    aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        18 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/202413104456880.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/439/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
-                    aria-describedby="slick-slide-control00" style="width: 207px;" data-slick-index="9"
-                    aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        7 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/20231230114015401.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/431/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel" style="width: 207px;"
-                    data-slick-index="10" aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        10 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/2023123014645389.jpg"
-                          alt="DÜNYA'NIN EN KÜÇÜK ŞEFİ">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/432/dunyanin-en-kucuk-sefi" class="tt-btn"
-                          tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
-                    aria-describedby="slick-slide-control01" style="width: 207px;" data-slick-index="11"
-                    aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        11 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/20241211252448.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/434/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel" style="width: 207px;"
-                    data-slick-index="12" aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        12 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/202412171646410.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/435/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
-                    aria-describedby="slick-slide-control02" style="width: 207px;" data-slick-index="13"
-                    aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        13 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/202412171353339.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/436/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel" style="width: 207px;"
-                    data-slick-index="14" aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        14 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/20231225145337262.jpg"
-                          alt="Küçük Prens">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/423/kucuk-prens" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
-                    aria-describedby="slick-slide-control03" style="width: 207px;" data-slick-index="15"
-                    aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        14 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/20241217346868.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/437/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel" style="width: 207px;"
-                    data-slick-index="16" aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        17 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/202413112810886.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/440/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="slick-slide slick-cloned" tabindex="-1" role="tabpanel"
-                    aria-describedby="slick-slide-control04" style="width: 207px;" data-slick-index="17"
-                    aria-hidden="true">
-                    <div class="event-item">
-                      <div class="event-item__label">
-                        18 <span alt="Jan">Jan</span>
-                      </div>
-                      <div class="event-item__img">
-
-                        <img src="https://panel.cosmosticket.net//upload/activity/202413104456880.jpg"
-                          alt="LE PETİT CHEF">
-                      </div>
-                      <div class="event-item__layout">
-                        <a href="/etkinlik/439/le-petit-chef" class="tt-btn" tabindex="-1"><span>DETAILS</span></a>
-                      </div>
-                    </div>
-                  </div> -->
                 </div>
               </div>
               <ul class="slick-dots" role="tablist" style="">
@@ -1019,24 +638,26 @@
       </div>
       <div>
 
-        <div class="tickets-wide " data-id="431" *ngFor="let _ of [].constructor(staticCount); let guestIndx = index">
+        <div class="tickets-wide " data-id="431" *ngFor="let item of productsListByDate; let guestIndx = index">
           <div class="tickets-wide__item">
             <div class="tickets-wide__img"><img
-                src="https://panel.cosmosticket.net//upload/activity/20231230114015401.jpg" alt=""></div>
+                src="{{item && item.child && item.child[0] && item.child[0].imageList && item.child[0].imageList[0] ? item.child[0].imageList[0] : 'https://panel.cosmosticket.net//upload/activity/20231230114015401.jpg'}}"
+                alt="">
+            </div>
             <div class="tickets-wide__description">
               <div class="tt-col">
                 <div class="tickets-wide__label">
-                  <span> 07</span>
-                  Jan
+                  <span>{{ item.date | date:'dd' }}</span>
+                  {{ item.date | date:'MMM' | uppercase }}
                 </div>
               </div>
               <div class="tt-col">
-                <div class="tickets-wide__data">SUNDAY, JAN 07, 2024</div>
-                <div class="tickets-wide__title">LE PETİT CHEF</div>
+                <div class="tickets-wide__data">{{ item.date | date:'EEEE, MMM dd, yyyy' }}</div>
+                <div class="tickets-wide__title">{{item.child[0].remark}}</div>
               </div>
             </div>
             <div class="tickets-wide__btn">
-              <button class="tt-btn-default" (click)="openSelectedEventDetails('9209bd7b-177e-430a-839f-35583c04c7a0')">
+              <button class="tt-btn-default" (click)="openSelectedEventDetails(item.child[0].programDetailId)">
                 <span>DETAILS</span>
               </button>
             </div>

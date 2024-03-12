@@ -4,6 +4,7 @@ import { Observable, catchError, of, switchMap, throwError } from 'rxjs';
 import { HttpService } from './Http.service';
 import { adminEndPoints } from 'src/environments/adminEndPoints';
 import { AuthUtils } from './auth.utils';
+import { UserService } from '../user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class AuthService {
   private _CustomerAuthenticated: boolean = false;
   constructor(
     private _httpClient: HttpClient,
-    private httpService: HttpService
+    private httpService: HttpService,
+    private _userService: UserService
   ) { }
 
 
@@ -29,8 +31,12 @@ export class AuthService {
 
   signIn(credentials: { domain: string }): Observable<any> {
     // Throw error, if the user is already logged in
-    if (this._authenticated) {
-      return throwError('User is already logged in.');
+    const token = localStorage.getItem('accessToken') ?? null;
+
+    if (this._authenticated || token) {
+      //return throwError('User is already logged in.');
+      return of('User is already logged in.');
+
     }
 
     return this.httpService.signIn(adminEndPoints.auth.signIn, credentials.domain).pipe(
@@ -127,5 +133,33 @@ export class AuthService {
 
     // If the access token exists and it didn't expire, sign in using it
     return this.signInUsingToken();
+  }
+
+
+  signInWithPropId(credentials: { domain: string, propertyId: string }): Observable<any> {
+    // Throw error, if the user is already logged in
+    if (this._authenticated) {
+      return throwError('User is already logged in.');
+    }
+
+    return this.httpService.signInWithPropId(adminEndPoints.auth.signIn, credentials.domain, credentials.propertyId).pipe(
+      switchMap(async (response: any) => {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('defaultLanguages');
+        localStorage.removeItem('enterprise');
+        localStorage.removeItem('activeLang');
+        // Store the access token in the local storage
+        this.accessToken = response.access_token;
+
+        // Set the authenticated flag to true
+        this._authenticated = true;
+
+        // Store the user on the user service
+        this._userService.user = response.user;
+
+        // Return a new observable with the response
+        return of(response);
+      })
+    );
   }
 }

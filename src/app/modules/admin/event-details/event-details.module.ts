@@ -7,6 +7,7 @@ import { EventMainResPaymentComponent } from './event-main-res-payment/event-mai
 import { EventMainResRequestComponent } from './event-main-res-request/event-main-res-request.component';
 import { EventDetailsBasketComponent } from './dialogs/event-details-basket/event-details-basket.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     MatDialogModule,
+    FormsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

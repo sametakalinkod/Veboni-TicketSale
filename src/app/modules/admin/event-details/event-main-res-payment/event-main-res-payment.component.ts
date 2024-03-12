@@ -5,6 +5,7 @@ import { EventDetailsBasketComponent } from '../dialogs/event-details-basket/eve
 import { SweetalertType } from 'src/app/common/enums/SweetalertType.enum';
 import { SweetAlertDto } from 'src/app/common/models/SweetAlertDto';
 import { GlobalService } from 'src/app/core/services/global/global.service';
+import { PmsProductSessionsByIdDto } from 'src/app/common/models/PmsProductSessionsByIdDto';
 
 @Component({
   selector: 'app-event-main-res-payment',
@@ -13,6 +14,10 @@ import { GlobalService } from 'src/app/core/services/global/global.service';
 })
 export class EventMainResPaymentComponent implements OnInit {
   @Input() selectedEventId: string | null = null;
+  @Input() html: string | null = null;
+  @Input() image: string | null = null;
+  @Input() selectedProductData: PmsProductSessionsByIdDto | null = null;
+  selectedSeance: any; // Define a property to hold the selected value
 
   basketItemDetails = [{
     'eventid': "23423423423fgd",
@@ -30,7 +35,18 @@ export class EventMainResPaymentComponent implements OnInit {
   }
 
   addBasket(): void {
-    this._cookieService.setCookie("basketEvents", JSON.stringify(this.basketItemDetails), 7);
+    const cookie = this._cookieService.getCookie('basketEvents');
+    const model = [{
+      sessionId: this.selectedProductData?.sessions[0].programDetailId,
+      image: this.image,
+      date: this.selectedProductData?.sessions[0].displayDate,
+      sessionTime: this.selectedSeance
+    }]
+    if (JSON.parse(cookie ?? '').length > 0) {
+      model.push(...JSON.parse(cookie ?? ''))
+    }
+
+    this._cookieService.setCookie("basketEvents", JSON.stringify(model), 7);
     const sweetAlertDto = new SweetAlertDto(
       'Sepete Eklendi!',
       '',
@@ -50,7 +66,14 @@ export class EventMainResPaymentComponent implements OnInit {
 
   updateHeader(newCookieValue: string): void {
     // Your logic to update the header
-    console.log('Header updated with new cookie value:', newCookieValue);
+
+    console.log('Header updated with new cookie value:', JSON.stringify(newCookieValue));
+  }
+
+  selectSeance(): void {
+
+    console.log('Selected Seance:', this.selectedSeance);
+    // You can perform further actions here based on the selected value
   }
 
 }

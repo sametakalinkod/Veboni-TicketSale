@@ -2,7 +2,7 @@
 
   <div class="eventLeft">
 
-    <img src="https://panel.cosmosticket.net/upload/activity/20231225145337262.jpg" alt="Küçük Prens" class="eventImg2">
+    <img src="{{selectedProductData?.imageList?.[0] ?? ''}}" alt="Küçük Prens" class="eventImg2">
 
     <div class="blocktitle">
       <div class="tt-caption">Cosmos Theatre - Küçük Prens</div>
@@ -10,7 +10,8 @@
     </div>
 
     <h3 class="subTitle">Programme:</h3>
-    <div class="eventDesc">
+    <div class="main" [innerHtml]="html"></div>
+    <!-- <div class="eventDesc">
       <div>
         Little Prince: A Story of Friendship, every&nbsp; Sunday at Cosmos Theatre!</div>
       <div>
@@ -133,30 +134,33 @@
       <div>
         Credit card commission is deducted from return fees.</div>
 
-    </div>
+    </div> -->
 
   </div>
 
   <div class="eventImg">
-    <img src="https://panel.cosmosticket.net/upload/activity/20231225145337262.jpg" alt="Küçük Prens">
+    <img [src]="image ?? ''" alt="Küçük Prens">
+
     <div class="seansListWrap">
       <div class="seansListInner">
         <div class="sessionLbl">
           <div>
-            Day : 14.01.2024
+            Day: {{selectedProductData && selectedProductData.sessions && selectedProductData.sessions[0]?.displayDate
+            ?? ''}}
           </div>
 
           Select Session
         </div>
 
         <div class="sessions">
-          <select class="form-control seansSelect" onchange="selectSeance(this.options[this.selectedIndex].value)">
+          <select class="form-control seansSelect" [(ngModel)]="selectedSeance" (ngModelChange)="selectSeance()">
 
-            <option value="617">12:00</option>
-            <option value="618">13:15</option>
+            <option [value]="item.seanceBegin" *ngFor="let item of selectedProductData?.sessions">{{item.seanceBegin}}
+            </option>
+            <!-- <option value="618">13:15</option>
             <option value="619">14:45</option>
             <option value="620">16:00</option>
-            <option value="621">17:15</option>
+            <option value="621">17:15</option> -->
           </select>
 
 

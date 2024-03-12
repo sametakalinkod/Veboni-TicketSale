@@ -1,5 +1,5 @@
 export class LanguageListDto {
-    shortName!: string;
-    remark!: string;
-    value!: string;
+    shortName?: string;
+    remark?: string;
+    value?: string;
 }

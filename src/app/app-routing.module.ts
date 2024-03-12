@@ -12,16 +12,18 @@ import { BasketComponent } from './modules/admin/basket/basket.component';
 
 
 
+
 const routes: Routes = [
   {
-    path: "", component: HomeComponent
-    // ,
-    // resolve: {
-    //   initData: InitialDataResolver
-    // }
+    path: '', redirectTo: '/home', pathMatch: 'full', resolve: {
+      initialData: HomeComponent,
+    }
   },
-  { path: "", component: HeaderComponent },
-  { path: "", component: FooterComponent },
+  {
+    path: 'home', component: HomeComponent, resolve: {
+      initialData: InitialDataResolver,
+    }
+  },
   { path: "eventdetails/:id", component: EventDetailsComponent },
   { path: "payment", component: EventPaymentComponent },
   { path: "basket", component: BasketComponent }

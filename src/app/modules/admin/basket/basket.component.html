@@ -11,13 +11,13 @@
               <div class="m-basket__body">
                 <div class="m-basket__item">
                   <div class="m-basket__content">
-                    <div class="m-basket__contentPanel"><!---->
+                    <div class="m-basket__contentPanel" *ngFor="let item of basketItems">
                       <div class="m-basket__figure"><a
                           href="/p_sony-playstation-5-1-tb-slim-dijital-edition-oyun-konsolu-2-ps5-kol-beyaz_1391482"
                           title="Playstation 5 1 TB Slim Dijital Edition Oyun Konsolu + 2. PS5 Kol Beyaz"
                           class="m-basket__figureLink">
-                          <img src="https://panel.cosmosticket.net/upload/activity/20231225145337262.jpg" width="164"
-                            height="227" alt="Playstation 5 1 TB Slim Dijital Edition Oyun Konsolu + 2. PS5 Kol Beyaz"
+                          <img src="{{item?.image ?? ''}}" width="164" height="227"
+                            alt="Playstation 5 1 TB Slim Dijital Edition Oyun Konsolu + 2. PS5 Kol Beyaz"
                             class="m-basket__figureImg -lazyImage"></a></div>
                       <div class="m-basket__optionContent">
                         <div class="m-basket__optionHeader"><a

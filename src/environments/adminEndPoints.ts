@@ -44,5 +44,18 @@ export const adminEndPoints = {
         getBankFromCardNumber: 'payment/payment/GetBankFromCardNumber',
         getErpECollectionEntrys: 'account/payment/GetCurrencyItems',
         getInstallmentOptionsByBanks: 'payment/payment/GetInstallmentOptionsByBanks',
+    },
+    companyInfo: {
+        checkCompanyDomain: 'identity/api/account/CheckCompanyDomains',
+        getHotelDefinition: 'pms/onlinereservation/GetHotelDefinition',
+        getGroupDefination: 'pms/onlinereservation/GetGroupDefinition',
+        getOnlineTerms: 'pms/onlinereservation/GetOnlieTerms'
+    },
+    products: {
+        getPmsSalesForecastReport: 'pms/Operation/GetPmsSalesForecastReport',
+        getSessionWithId: 'pms/Operation/GetPmsProductSessionsById'
+    },
+    common: {
+        readHtml: 'pms/onlinereservation/ReadHtml'
     }
 };

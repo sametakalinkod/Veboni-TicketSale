@@ -40,13 +40,14 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   updateHeader(newCookieValue?: string): void {
     // Your logic to update the header
+     
     const basketValue = this._cookieService.getCookie('basketEvents')
     if (basketValue && JSON.parse(basketValue)) {
       this.basketItems = JSON.parse(basketValue);
     } else {
       this.basketItems = [];
     }
-    console.log('This is header updated with new cookie value:', newCookieValue);
+    console.log('This is header updated with new cookie value:', basketValue);
   }
 
 

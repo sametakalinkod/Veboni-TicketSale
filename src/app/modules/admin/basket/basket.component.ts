@@ -70,6 +70,7 @@ export class BasketComponent implements OnInit {
   totalPrice: number = 0;
   paymentLink!: string;
   selectedValue: string = '1';
+  basketItems: any[] = [];
   constructor(
     private _formBuilder: FormBuilder,
     //private _translocoService: TranslocoService,
@@ -79,8 +80,15 @@ export class BasketComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const data = this._cookieService.getCookie('basketEvents');
+     
+    if (JSON.parse(data ?? '').length > 0) {
+      this.basketItems = JSON.parse(data ?? '');
+       
+    }
     this._cookieService.subscribeToCookieChanges().subscribe((newCookieValue: string) => {
       // Handle the event in the header component
+       
       this.updateHeader(newCookieValue);
     });
 
@@ -112,7 +120,7 @@ export class BasketComponent implements OnInit {
   }
 
   paymentProcessContinue(): void {
-    debugger
+     
     if (!this.paymentForm.valid && this.paymentProcess) {
       const sweetAlertDto = new SweetAlertDto(
         this.translate('sweetalert.error'),
