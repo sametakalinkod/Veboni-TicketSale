@@ -81,14 +81,14 @@ export class BasketComponent implements OnInit {
 
   ngOnInit(): void {
     const data = this._cookieService.getCookie('basketEvents');
-     
+
     if (JSON.parse(data ?? '').length > 0) {
       this.basketItems = JSON.parse(data ?? '');
-       
+
     }
     this._cookieService.subscribeToCookieChanges().subscribe((newCookieValue: string) => {
       // Handle the event in the header component
-       
+
       this.updateHeader(newCookieValue);
     });
 
@@ -120,7 +120,7 @@ export class BasketComponent implements OnInit {
   }
 
   paymentProcessContinue(): void {
-     
+
     if (!this.paymentForm.valid && this.paymentProcess) {
       const sweetAlertDto = new SweetAlertDto(
         this.translate('sweetalert.error'),
@@ -316,5 +316,15 @@ export class BasketComponent implements OnInit {
     // Your logic to update the header
     console.log('Header updated with new cookie value:', newCookieValue);
   }
+
+  formatTime(time: string): string {
+    const [hoursStr, minutesStr] = time.split(':');
+    const hours = parseInt(hoursStr, 10);
+    const minutes = parseInt(minutesStr, 10);
+    const formattedHours = hours < 10 ? '0' + hours : hours.toString();
+    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes.toString();
+    return `${formattedHours}:${formattedMinutes}`;
+  }
+
 
 }

@@ -35,14 +35,18 @@ export class EventMainResPaymentComponent implements OnInit {
 
   addBasket(): void {
     const cookie = this._cookieService.getCookie('basketEvents');
+
     const model = [{
       sessionId: this.selectedProductData?.sessions[0].programDetailId,
       image: this.image,
-      date: this.selectedProductData?.sessions[0].displayDate,
-      sessionTime: this.selectedSeance
+      date: this.selectedProductData?.programEndDate,
+      sessionTime: this.selectedSeance,
+      childPrice: this.selectedProductData?.sessions[0].childTicketPrice,
+      adultPrice: this.selectedProductData?.sessions[0].ticketPrice
     }]
-    if (JSON.parse(cookie ?? '').length > 0) {
-      model.push(...JSON.parse(cookie ?? ''))
+    if (cookie) {
+      const json = JSON.parse(cookie);
+      model.push(...json)
     }
 
     this._cookieService.setCookie("basketEvents", JSON.stringify(model), 7);
