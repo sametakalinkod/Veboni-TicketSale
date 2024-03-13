@@ -24,7 +24,7 @@
                             class="m-basket__productInfo--link"><strong class="m-basket__productInfoCategory">Küçük
                               Prens</strong> <span class="m-basket__productInfoName">{{ item.date | date:'EEEE, MMM dd,
                               yyyy' }}
-                              {{ formatTime(item.sessionTime) }}</span></a> </div>
+                              {{ item.sessionTime}}</span></a> </div>
                         <div class="m-basket__productTools">
                           <div class="m-basket__productInfo">
                             <div class="m-basket__productPrice">
@@ -33,9 +33,10 @@
                                 <div class="m-productPrice__discount"><span
                                     class="m-productPrice__discountValue">-%10</span></div>
                                 <div class="m-productPrice__content"><span class="m-productPrice__oldPrice">{{
-                                    ((+selectedValue * +item.adultPrice) + (+selectedValue * +item.adultPrice / 10))
+                                    ((+item.adultCount * +item.adultPrice) + (+item.adultCount * +item.adultPrice / 10))
                                     | currency:'':'':'1.2-2' }} TL
-                                  </span> <span class="m-productPrice__salePrice">{{ (+selectedValue * +item.adultPrice)
+                                  </span> <span class="m-productPrice__salePrice">{{ (+item.adultCount *
+                                    +item.adultPrice)
                                     | currency:'':'':'1.2-2' }} TL</span></div>
                               </div>
                               <!-- <div class="m-productPrice">
@@ -52,7 +53,9 @@
                                   Yetişkin:
                                 </div>
                                 <div class="m-select -small"><select #quantitySelect id="quantitySelect0-key-0"
-                                    (change)="onQuantityChange(quantitySelect.value)" class="a-selectControl -small">
+                                    [(ngModel)]="item.adultcount"
+                                    (ngModelChange)="onQuantityChange($event, item.sessionId)"
+                                    class="a-selectControl -small">
                                     <option value="1">
                                       1 adet
                                       <!---->

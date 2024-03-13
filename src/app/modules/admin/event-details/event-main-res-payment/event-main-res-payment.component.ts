@@ -43,7 +43,7 @@ export class EventMainResPaymentComponent implements OnInit {
       sessionTime: this.selectedSeance,
       childPrice: this.selectedProductData?.sessions[0].childTicketPrice,
       adultPrice: this.selectedProductData?.sessions[0].ticketPrice,
-
+      adultCount: 1
     }]
     if (cookie) {
       const json = JSON.parse(cookie);

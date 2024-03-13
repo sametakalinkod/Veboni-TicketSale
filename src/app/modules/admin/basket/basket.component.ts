@@ -294,10 +294,8 @@ export class BasketComponent implements OnInit {
       }
     });
   }
-  onQuantityChange(selectedValue: string) {
-    console.log('Selected value:', selectedValue);
-    this.selectedValue = selectedValue;
-    // You can perform further actions here based on the selected value
+  onQuantityChange(selectedValue: any, sessionId: string): void {
+    this.basketItems.find(x => x.sessionId === sessionId).adultCount = selectedValue;
   }
   calculateTotalPrice(totalPrice: number): number {
     return totalPrice * parseInt(this.selectedValue, 10);
