@@ -12,17 +12,14 @@
                 <div class="m-basket__item">
                   <div class="m-basket__content">
                     <div class="m-basket__contentPanel" *ngFor="let item of basketItems">
-                      <div class="m-basket__figure"><a
-                          title="Playstation 5 1 TB Slim Dijital Edition Oyun Konsolu + 2. PS5 Kol Beyaz"
-                          class="m-basket__figureLink">
+                      <div class="m-basket__figure"><a class="m-basket__figureLink">
                           <img src="{{item?.image ?? ''}}" width="164" height="227"
                             alt="Playstation 5 1 TB Slim Dijital Edition Oyun Konsolu + 2. PS5 Kol Beyaz"
                             class="m-basket__figureImg -lazyImage"></a></div>
                       <div class="m-basket__optionContent">
-                        <div class="m-basket__optionHeader"><a
-                            title="Playstation 5 1 TB Slim Dijital Edition Oyun Konsolu + 2. PS5 Kol Beyaz"
-                            class="m-basket__productInfo--link"><strong class="m-basket__productInfoCategory">Küçük
-                              Prens</strong> <span class="m-basket__productInfoName">{{ item.date | date:'EEEE, MMM dd,
+                        <div class="m-basket__optionHeader"><a class="m-basket__productInfo--link"><strong
+                              class="m-basket__productInfoCategory">{{item?.remark ?? ''}}</strong> <span
+                              class="m-basket__productInfoName">{{ item.date | date:'EEEE, MMM dd,
                               yyyy' }}
                               {{ item.sessionTime}}</span></a> </div>
                         <div class="m-basket__productTools">
@@ -53,205 +50,13 @@
                                   Yetişkin:
                                 </div>
                                 <div class="m-select -small"><select #quantitySelect id="quantitySelect0-key-0"
-                                    [(ngModel)]="item.adultcount"
+                                    value="1" [(ngModel)]="item.adultcount"
                                     (ngModelChange)="onQuantityChange($event, item.sessionId)"
                                     class="a-selectControl -small">
-                                    <option value="1">
-                                      1 adet
-                                      <!---->
-                                    </option>
-                                    <option value="2">
-                                      2 adet
-                                      <!---->
-                                    </option>
-                                    <option value="3">
-                                      3 adet
-                                      <!---->
-                                    </option>
-                                    <option value="4">
-                                      4 adet
-                                      <!---->
-                                    </option>
-                                    <option value="5">
-                                      5 adet
-                                      <!---->
-                                    </option>
-                                    <option value="6">
-                                      6 adet
-                                      <!---->
-                                    </option>
-                                    <option value="7">
-                                      7 adet
-                                      <!---->
-                                    </option>
-                                    <option value="8">
-                                      8 adet
-                                      <!---->
-                                    </option>
-                                    <option value="9">
-                                      9 adet
-                                      <!---->
-                                    </option>
-                                    <option value="10">
-                                      10 adet
-                                      <!---->
-                                    </option>
-                                    <option value="11">
-                                      11 adet
-                                      <!---->
-                                    </option>
-                                    <option value="12">
-                                      12 adet
-                                      <!---->
-                                    </option>
-                                    <option value="13">
-                                      13 adet
-                                      <!---->
-                                    </option>
-                                    <option value="14">
-                                      14 adet
-                                      <!---->
-                                    </option>
-                                    <option value="15">
-                                      15 adet
-                                      <!---->
-                                    </option>
-                                    <option value="16">
-                                      16 adet
-                                      <!---->
-                                    </option>
-                                    <option value="17">
-                                      17 adet
-                                      <!---->
-                                    </option>
-                                    <option value="18">
-                                      18 adet
-                                      <!---->
-                                    </option>
-                                    <option value="19">
-                                      19 adet
-                                      <!---->
-                                    </option>
-                                    <option value="20">
-                                      20 adet
-                                      <!---->
-                                    </option>
-                                    <option value="21">
-                                      21 adet
-                                      <!---->
-                                    </option>
-                                    <option value="22">
-                                      22 adet
-                                      <!---->
-                                    </option>
-                                    <option value="23">
-                                      23 adet
-                                      <!---->
-                                    </option>
-                                    <option value="24">
-                                      24 adet
-                                      <!---->
-                                    </option>
-                                    <option value="25">
-                                      25 adet
-                                      <!---->
-                                    </option>
-                                    <option value="26">
-                                      26 adet
-                                      <!---->
-                                    </option>
-                                    <option value="27">
-                                      27 adet
-                                      <!---->
-                                    </option>
-                                    <option value="28">
-                                      28 adet
-                                      <!---->
-                                    </option>
-                                    <option value="29">
-                                      29 adet
-                                      <!---->
-                                    </option>
-                                    <option value="30">
-                                      30 adet
-                                      <!---->
-                                    </option>
-                                    <option value="31">
-                                      31 adet
-                                      <!---->
-                                    </option>
-                                    <option value="32">
-                                      32 adet
-                                      <!---->
-                                    </option>
-                                    <option value="33">
-                                      33 adet
-                                      <!---->
-                                    </option>
-                                    <option value="34">
-                                      34 adet
-                                      <!---->
-                                    </option>
-                                    <option value="35">
-                                      35 adet
-                                      <!---->
-                                    </option>
-                                    <option value="36">
-                                      36 adet
-                                      <!---->
-                                    </option>
-                                    <option value="37">
-                                      37 adet
-                                      <!---->
-                                    </option>
-                                    <option value="38">
-                                      38 adet
-                                      <!---->
-                                    </option>
-                                    <option value="39">
-                                      39 adet
-                                      <!---->
-                                    </option>
-                                    <option value="40">
-                                      40 adet
-                                      <!---->
-                                    </option>
-                                    <option value="41">
-                                      41 adet
-                                      <!---->
-                                    </option>
-                                    <option value="42">
-                                      42 adet
-                                      <!---->
-                                    </option>
-                                    <option value="43">
-                                      43 adet
-                                      <!---->
-                                    </option>
-                                    <option value="44">
-                                      44 adet
-                                      <!---->
-                                    </option>
-                                    <option value="45">
-                                      45 adet
-                                      <!---->
-                                    </option>
-                                    <option value="46">
-                                      46 adet
-                                      <!---->
-                                    </option>
-                                    <option value="47">
-                                      47 adet
-                                      <!---->
-                                    </option>
-                                    <option value="48">
-                                      48 adet
-                                      <!---->
-                                    </option>
-                                    <option value="49">
-                                      49 adet
-                                      <!---->
-                                    </option>
+                                    <option selected *ngFor="let quantity of quantityOptions" [value]="quantity">{{
+                                      quantity }}
+                                      adet</option>
+
                                   </select></div>
                               </div>
                             </div>
@@ -260,7 +65,7 @@
                         <div class="m-basket__options">
                           <div class="m-basket__optionsItem">
                             <button id="removeCartItemBtn0-key-0" type="button" class="m-basket__remove"
-                              (click)="removeItem()">
+                              (click)="removeItem(item.sessionId)">
                               <mat-icon id="delete-icon">delete</mat-icon>Sil
                             </button>
                           </div>
@@ -406,17 +211,17 @@
                 <div class="m-orderSummary__body">
                   <ul class="m-orderSummary__calculate">
                     <li class="m-orderSummary__item"><span class="m-orderSummary__name">Toplam Tutar (KDV Dahil)</span>
-                      <span class="m-orderSummary__value">{{ calculateTotalPrice(2500) |
+                      <span class="m-orderSummary__value">{{ calculateTotalPrice() |
                         currency:'':'':'1.2-2'}} TL</span>
                     </li>
                     <li class="m-orderSummary__item -arrowUp"><span class="m-orderSummary__name">Toplam İndirim
-                        Tutarı</span> <span class="m-orderSummary__value">{{ calculateTotalPrice(-250) |
+                        Tutarı</span> <span class="m-orderSummary__value">{{ calculateTotalPrice(10) |
                         currency:'':'':'1.2-2'}} TL</span></li>
                     <li class="subList">
                       <ul>
 
                         <li class="m-orderSummary__item -last"><span class="m-orderSummary__name">Kampanya
-                            İndirimi</span> <span class="m-orderSummary__value">{{ calculateTotalPrice(-250) |
+                            İndirimi</span> <span class="m-orderSummary__value">{{ calculateTotalPrice(10) |
                             currency:'':'':'1.2-2'}} TL</span></li>
                       </ul>
                     </li>
@@ -424,7 +229,7 @@
                     <li class="m-orderSummary__item -grandTotal"><span class="m-orderSummary__name">Ödenecek
                         Tutar</span> <span class="m-orderSummary__value"
                         ins-init-condition="#Li1ncmFuZFRvdGFsIC5tLW9yZGVyU3VtbWFyeV9fdmFsdWUsICNlbXR5Q2FydA==">{{
-                        calculateTotalPrice(2250) |
+                        calculateTotalPrice(90) |
                         currency:'':'':'1.2-2'}}
                         TL</span></li>
                   </ul>

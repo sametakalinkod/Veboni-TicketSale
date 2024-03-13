@@ -71,6 +71,8 @@ export class BasketComponent implements OnInit {
   paymentLink!: string;
   selectedValue: string = '1';
   basketItems: any[] = [];
+  quantityOptions: number[] = [1, 2, 3, 4, 5, 6]; // Define array of quantity options
+
   constructor(
     private _formBuilder: FormBuilder,
     //private _translocoService: TranslocoService,
@@ -295,18 +297,44 @@ export class BasketComponent implements OnInit {
     });
   }
   onQuantityChange(selectedValue: any, sessionId: string): void {
+    debugger
     this.basketItems.find(x => x.sessionId === sessionId).adultCount = selectedValue;
   }
-  calculateTotalPrice(totalPrice: number): number {
-    return totalPrice * parseInt(this.selectedValue, 10);
+  calculateTotalPrice(percentage?: number): number {
+    this.basketItems.forEach(item => {
+      const adultCount = parseInt(item.adultCount, 10);
+      const totalPrice = (adultCount * item.adultPrice);
+      item.totalPrice = totalPrice;
+    });
+    let grandTotal = this.basketItems.reduce((total, item) => total + item.totalPrice, 0);
+    if (percentage) {
+      grandTotal = grandTotal * percentage / 100;
+    }
+
+    return grandTotal;
+
+    //return totalPrice * parseInt(this.selectedValue, 10);
   }
 
-  removeItem() {
-    // Add logic to remove the item here
-    console.log('Item removed!');
-    this._cookieService.deleteCookie('basketEvents');
+  removeItem(recId: string) {
+    const index = this.basketItems.findIndex(item => item.sessionId === recId);
 
-    this._router.navigate(['/']);
+    if (index !== -1) {
+      this.basketItems.splice(index, 1);
+
+      this._cookieService.setCookie('basketEvents', JSON.stringify(this.basketItems), 7);
+
+      if (this.basketItems.length === 0) {
+        this._router.navigate(['/home']);
+      } else {
+        const sweetAlertDto = new SweetAlertDto(
+          'Ürün Kaldırıldı!',
+          '',
+          SweetalertType.success
+        );
+        GlobalService.sweetAlert(sweetAlertDto);
+      }
+    }
   }
 
 
