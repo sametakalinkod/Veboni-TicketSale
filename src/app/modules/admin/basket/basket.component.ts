@@ -72,7 +72,8 @@ export class BasketComponent implements OnInit {
   selectedValue: string = '1';
   basketItems: any[] = [];
   quantityOptions: number[] = [1, 2, 3, 4, 5, 6]; // Define array of quantity options
-
+  ticketPrices: number = 0;
+  extraPrices: number = 0;
   constructor(
     private _formBuilder: FormBuilder,
     //private _translocoService: TranslocoService,
@@ -86,7 +87,8 @@ export class BasketComponent implements OnInit {
 
     if (JSON.parse(data ?? '').length > 0) {
       this.basketItems = JSON.parse(data ?? '');
-
+      this.ticketPrices = this.calculateAllTicketPrices();
+      this.extraPrices = this.calculateAllExtrasPrices();
 
     }
     this._cookieService.subscribeToCookieChanges().subscribe((newCookieValue: string) => {
@@ -374,5 +376,35 @@ export class BasketComponent implements OnInit {
       // window.open(url, '_blank');
       window.location.href = url;
     }
+  }
+  calculateAllTicketPrices(): number {
+    this.basketItems.forEach(item => {
+      item.total = 0;
+      const adultCount = parseInt(item.adultCount, 10);
+      const totalPrice = (adultCount * item.adultPrice);
+      item.total = totalPrice;
+
+    });
+    let grandTotal = this.basketItems.reduce((total, item) => total + item.total, 0);
+
+    return grandTotal;
+
+    return 0;
+  }
+  calculateAllExtrasPrices(): number {
+    let total = 0;
+
+    this.basketItems.forEach(item => {
+      item.total = 0;
+      if (item.extraServices && item.extraServices.length > 0) {
+        item.extraServices.forEach((extraService: { count: number; price: number; }) => {
+          item.total += extraService.count * extraService.price;
+        });
+      }
+    });
+    let grandTotal = this.basketItems.reduce((total, item) => total + item.total, 0);
+
+
+    return grandTotal;
   }
 }

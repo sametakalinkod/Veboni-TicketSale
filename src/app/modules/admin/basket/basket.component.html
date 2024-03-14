@@ -230,6 +230,33 @@
                       <span class="m-orderSummary__value">{{ calculateTotalPrice() |
                         currency:'':'':'1.2-2'}} TL</span>
                     </li>
+                    <li class="m-orderSummary__item -arrowUp"><span class="m-orderSummary__name">Sepet Detayları</span>
+                      <span class="m-orderSummary__value"> </span>
+                    </li>
+                    <li class="subList">
+                      <ul>
+
+                        <li class="m-orderSummary__item -last"><span class="m-orderSummary__name">Bilet
+                            Toplamı</span> <span class="m-orderSummary__value">{{ ticketPrices |
+                            currency:'':'':'1.2-2'}} TL</span></li>
+                        <li class="m-orderSummary__item -last"><span class="m-orderSummary__name">Ekstralar
+                            Toplamı</span> <span class="m-orderSummary__value">{{ extraPrices |
+                            currency:'':'':'1.2-2'}} TL</span></li>
+                      </ul>
+                    </li>
+
+                    <li class="m-orderSummary__item -grandTotal"><span class="m-orderSummary__name">Ödenecek
+                        Tutar</span> <span class="m-orderSummary__value"
+                        ins-init-condition="#Li1ncmFuZFRvdGFsIC5tLW9yZGVyU3VtbWFyeV9fdmFsdWUsICNlbXR5Q2FydA==">{{
+                        calculateTotalPrice() |
+                        currency:'':'':'1.2-2'}}
+                        TL</span></li>
+                  </ul>
+                  <!-- <ul class="m-orderSummary__calculate">
+                    <li class="m-orderSummary__item"><span class="m-orderSummary__name">Toplam Tutar (KDV Dahil)</span>
+                      <span class="m-orderSummary__value">{{ calculateTotalPrice() |
+                        currency:'':'':'1.2-2'}} TL</span>
+                    </li>
                     <li class="m-orderSummary__item -arrowUp"><span class="m-orderSummary__name">Toplam İndirim
                         Tutarı</span> <span class="m-orderSummary__value">{{ calculateTotalPrice(10) |
                         currency:'':'':'1.2-2'}} TL</span></li>
@@ -248,7 +275,7 @@
                         calculateTotalPrice(90) |
                         currency:'':'':'1.2-2'}}
                         TL</span></li>
-                  </ul>
+                  </ul> -->
                 </div>
                 <div class="m-orderSummary__bottom"><button type="button" id="nextBtn" class="btn -dark -large"
                     (click)="paymentProcessContinue()">SATIN
