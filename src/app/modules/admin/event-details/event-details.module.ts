@@ -8,6 +8,8 @@ import { EventMainResRequestComponent } from './event-main-res-request/event-mai
 import { EventDetailsBasketComponent } from './dialogs/event-details-basket/event-details-basket.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { EventMainResExstrasComponent } from './event-main-res-exstras/event-main-res-exstras.component';
+import { MaterialModule } from 'src/app/material-module';
 
 const routes: Routes = [
   {
@@ -22,13 +24,15 @@ const routes: Routes = [
     BrowserModule,
     MatDialogModule,
     FormsModule,
+    MaterialModule,
     RouterModule.forChild(routes)
   ],
   declarations: [
     EventDetailsComponent,
     EventMainResPaymentComponent,
     EventMainResRequestComponent,
-    EventDetailsBasketComponent
+    EventDetailsBasketComponent,
+    EventMainResExstrasComponent
   ]
 })
 export class EventDetailsModule { }

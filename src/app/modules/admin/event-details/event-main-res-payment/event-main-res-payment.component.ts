@@ -5,6 +5,7 @@ import { SweetalertType } from 'src/app/common/enums/SweetalertType.enum';
 import { SweetAlertDto } from 'src/app/common/models/SweetAlertDto';
 import { GlobalService } from 'src/app/core/services/global/global.service';
 import { PmsProductSessionsByIdDto } from 'src/app/common/models/PmsProductSessionsByIdDto';
+import { EventDetailsBasketComponent } from '../dialogs/event-details-basket/event-details-basket.component';
 
 @Component({
   selector: 'app-event-main-res-payment',
@@ -34,30 +35,47 @@ export class EventMainResPaymentComponent implements OnInit {
   }
 
   addBasket(): void {
-    const cookie = this._cookieService.getCookie('basketEvents');
+    debugger
+    const data = this.selectedProductData;
+    // const selectedSession = data?.sessions.find(x => x.programDetailId === selectedSession);
+    data?.sessions.filter(x => x.programDetailId === this.selectedSeance)
+    const dialog = this._dialog.open(EventDetailsBasketComponent, {
+      disableClose: false,
+      data: data
+    }).afterClosed().subscribe((err) => {
+      if (err.status) {
+        const sweetAlertDto = new SweetAlertDto(
+          'Sepete Eklendi!',
+          '',
+          SweetalertType.success
+        );
+        GlobalService.sweetAlert(sweetAlertDto);
+      }
+    });
+    // const cookie = this._cookieService.getCookie('basketEvents');
 
-    const model = [{
-      sessionId: this.selectedProductData?.sessions[0].programDetailId,
-      image: this.image,
-      date: this.selectedProductData?.programEndDate,
-      sessionTime: this.selectedSeance,
-      childPrice: this.selectedProductData?.sessions[0].childTicketPrice,
-      adultPrice: this.selectedProductData?.sessions[0].ticketPrice,
-      adultCount: '1',
-      title: this.selectedProductData?.sessions[0].remark
-    }]
-    if (cookie) {
-      const json = JSON.parse(cookie);
-      model.push(...json)
-    }
+    // const model = [{
+    //   sessionId: this.selectedProductData?.sessions[0].programDetailId,
+    //   image: this.image,
+    //   date: this.selectedProductData?.programEndDate,
+    //   sessionTime: this.selectedSeance,
+    //   childPrice: this.selectedProductData?.sessions[0].childTicketPrice,
+    //   adultPrice: this.selectedProductData?.sessions[0].ticketPrice,
+    //   adultCount: '1',
+    //   title: this.selectedProductData?.sessions[0].remark
+    // }]
+    // if (cookie) {
+    //   const json = JSON.parse(cookie);
+    //   model.push(...json)
+    // }
 
-    this._cookieService.setCookie("basketEvents", JSON.stringify(model), 7);
-    const sweetAlertDto = new SweetAlertDto(
-      'Sepete Eklendi!',
-      '',
-      SweetalertType.success
-    );
-    GlobalService.sweetAlert(sweetAlertDto);
+    // this._cookieService.setCookie("basketEvents", JSON.stringify(model), 7);
+    // const sweetAlertDto = new SweetAlertDto(
+    //   'Sepete Eklendi!',
+    //   '',
+    //   SweetalertType.success
+    // );
+    // GlobalService.sweetAlert(sweetAlertDto);
     // const dialog = this._dialog.open(EventDetailsBasketComponent, {
     //   disableClose: false,
     //   data: null

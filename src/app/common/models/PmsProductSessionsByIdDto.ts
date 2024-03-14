@@ -1,3 +1,4 @@
+import { PmsExtraProgramDefinitionsDto } from "./PmsExtraProgramDefinitionsDto";
 import { PmsSalesForecastReportDto } from "./PmsSalesForecastReportDto";
 
 export class PmsProductSessionsByIdDto {
@@ -7,4 +8,5 @@ export class PmsProductSessionsByIdDto {
     htmlList?: string;
     imageList: string[] = [];
     sessions: PmsSalesForecastReportDto[] = [];
+    extraProgram: PmsExtraProgramDefinitionsDto[] = [];
 } 

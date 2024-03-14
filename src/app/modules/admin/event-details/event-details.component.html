@@ -13,6 +13,9 @@
       <!-- <app-event-main-res-request></app-event-main-res-request> -->
       <app-event-main-res-payment [selectedEventId]="selectedRecId" [html]="htmlEditorValue"
         [selectedProductData]="selectedProductSessions" [image]="image"></app-event-main-res-payment>
+
+      <app-event-main-res-exstras
+        [exstraServices]="selectedProductSessions?.extraProgram ?? []"></app-event-main-res-exstras>
       <!-- 
       <div class="mt-30" id="salonPlanBtn">
         <h4 class="title text-center">CLICK HERE FOR SEATING PLAN</h4>

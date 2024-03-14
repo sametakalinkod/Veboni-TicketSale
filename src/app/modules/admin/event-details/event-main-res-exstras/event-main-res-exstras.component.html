@@ -1,0 +1,28 @@
+<div class="eventDetail mainEventDetail extra-services" *ngFor="let item of exstraServices">
+  <div class="extra-Image">
+    <div class="extraImg-container">
+      <img [src]="item.imageList && item.imageList.length > 0 ? item.imageList[0] : 'fallback-image-url'"
+        alt="Küçük Prens">
+    </div>
+    <div class="seansListWrap">
+      <div class="seansListInner">
+      </div>
+    </div>
+  </div>
+  <div class="eventLeft extra-content">
+    <div class="blocktitle">
+      <!-- <div class="tt-caption">Cosmos Theatre - Küçük Prens</div> -->
+      <h1 class="extra-title">{{item.name}}</h1>
+    </div>
+
+    <h3 class="subTitle">Programme:</h3>
+    <div class="main" [innerHtml]=""></div>
+  </div>
+  <div class="eventRight">
+    <div class="price-section">
+      <!-- Add your price content here -->
+      <span class="price">{{ item.price | currency:'':'':'1.2-2'}} {{item.currencyName}}</span>
+    </div>
+  </div>
+
+</div>

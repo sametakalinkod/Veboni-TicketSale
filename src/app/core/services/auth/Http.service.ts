@@ -1,9 +1,10 @@
 
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 import { ActionResponse } from '../../models/ActionResponse';
 import { environment } from 'src/environments/environment';
+import { adminEndPoints } from 'src/environments/adminEndPoints';
 
 
 @Injectable({
@@ -21,28 +22,78 @@ export class HttpService {
         return this.httpClient.get<Promise<any>>(fullUrl).toPromise();
     }
 
+
     post(url: string, body: any): Observable<any> {
         const fullUrl: string = this.apiAddress + url;
-
         const token = localStorage.getItem('accessToken') ?? null;
 
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        });
 
-        if (token) {
-            const headers = new HttpHeaders({
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            });
+        // if (token) {
+        //     const headers = new HttpHeaders({
+        //         'Content-Type': 'application/json',
+        //         'Authorization': `Bearer ${token}`
+        //     });
 
-            return this.httpClient.post(fullUrl, body, { headers }).pipe(
-                map((response: any) => {
-                    return response;
-                })
-            );
-        } else {
-            return this.httpClient
-                .post<Promise<any>>(fullUrl, body);
-        }
+        //     return this.httpClient.post(fullUrl, body, { headers }).pipe(
+        //         map((response: any) => {
+        //             return response;
+        //         }),
+        //         catchError((error: any) => {
+        //             if (error.status === 401) {
+        //                 localStorage.removeItem('accessToken');
+        //                 return throwError('Unauthorized access. Please login again.');
+        //             }
+        //             // For other errors, propagate the error to the subscriber
+        //             return throwError(error);
+        //         })
+        //     );
+        // } else {
+        //     // If token is not present, make the request without Authorization header
+
+        // }
+
+        return this.httpClient.post(fullUrl, body, { headers }).pipe(
+            catchError(async (error: any) => {
+                if (error.status === 401) {
+                    debugger
+                    localStorage.removeItem('accessToken');
+                    const signIn = await this.signIn(adminEndPoints.auth.signIn, window.location.origin.toLowerCase());
+                    return throwError('Unauthorized access. Please login again.');
+                }
+                // For other errors, propagate the error to the subscriber
+                return throwError(error);
+            })
+        );
     }
+
+    // post(url: string, body: any): Observable<any> {
+    //     debugger
+    //     const fullUrl: string = this.apiAddress + url;
+
+    //     const token = localStorage.getItem('accessToken') ?? null;
+
+
+    //     if (token) {
+    //         const headers = new HttpHeaders({
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Bearer ${token}`
+    //         });
+
+    //         return this.httpClient.post(fullUrl, body, { headers }).pipe(
+    //             map((response: any) => {
+    //                 debugger
+    //                 return response;
+    //             })
+    //         );
+    //     } else {
+    //         return this.httpClient
+    //             .post<Promise<any>>(fullUrl, body);
+    //     }
+    // }
     run<T>(url: string, body: any, options?: object): Observable<ActionResponse<T>> {
         const fullUrl: string = this.apiAddress + url;
         return this.httpClient.post<ActionResponse<T>>(fullUrl, body, options);
@@ -75,6 +126,7 @@ export class HttpService {
     }
 
     signIn(url: string, domain: string): Observable<any> {
+        debugger
         const body = new HttpParams()
             .set('grant_type', 'delegation')
             // .set('username', model.userName)
@@ -94,6 +146,7 @@ export class HttpService {
 
     }
     useRefreshToken(url: string, refreshToken: string): Observable<any> {
+        debugger
         const body = new HttpParams()
             .set('grant_type', 'refresh_token')
             .set('client_id', 'adminclient')
