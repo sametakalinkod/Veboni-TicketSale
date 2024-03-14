@@ -114,7 +114,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of extraServiceModelDtoArray">
-              <td>{{ getServiceName(item.serviceId) }}</td>
+              <!-- <td>{{ getServiceName(item.serviceId) }}</td> -->
+              <td>{{ item.serviceId }}</td>
               <td>{{ item.count }}</td>
               <td>{{ getPriceName(item) }}</td>
               <td>

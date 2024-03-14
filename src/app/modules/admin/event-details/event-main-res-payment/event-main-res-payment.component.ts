@@ -35,7 +35,7 @@ export class EventMainResPaymentComponent implements OnInit {
   }
 
   addBasket(): void {
-    debugger
+      
     const data = this.selectedProductData;
     // const selectedSession = data?.sessions.find(x => x.programDetailId === selectedSession);
     data?.sessions.filter(x => x.programDetailId === this.selectedSeance)

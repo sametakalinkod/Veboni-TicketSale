@@ -86,7 +86,7 @@ export class BasketComponent implements OnInit {
 
     if (JSON.parse(data ?? '').length > 0) {
       this.basketItems = JSON.parse(data ?? '');
-      debugger
+        
 
     }
     this._cookieService.subscribeToCookieChanges().subscribe((newCookieValue: string) => {
@@ -298,7 +298,7 @@ export class BasketComponent implements OnInit {
     });
   }
   onQuantityChange(selectedValue: any, sessionId: string): void {
-    debugger
+      
     this.basketItems.find(x => x.sessionId === sessionId).adultCount = selectedValue;
   }
   calculateTotalPrice(percentage?: number): number {

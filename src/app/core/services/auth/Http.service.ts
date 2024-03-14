@@ -59,7 +59,7 @@ export class HttpService {
         return this.httpClient.post(fullUrl, body, { headers }).pipe(
             catchError(async (error: any) => {
                 if (error.status === 401) {
-                    debugger
+                      
                     localStorage.removeItem('accessToken');
                     const signIn = await this.signIn(adminEndPoints.auth.signIn, window.location.origin.toLowerCase());
                     return throwError('Unauthorized access. Please login again.');
@@ -71,7 +71,7 @@ export class HttpService {
     }
 
     // post(url: string, body: any): Observable<any> {
-    //     debugger
+    //       
     //     const fullUrl: string = this.apiAddress + url;
 
     //     const token = localStorage.getItem('accessToken') ?? null;
@@ -85,7 +85,7 @@ export class HttpService {
 
     //         return this.httpClient.post(fullUrl, body, { headers }).pipe(
     //             map((response: any) => {
-    //                 debugger
+    //                   
     //                 return response;
     //             })
     //         );
@@ -126,7 +126,7 @@ export class HttpService {
     }
 
     signIn(url: string, domain: string): Observable<any> {
-        debugger
+          
         const body = new HttpParams()
             .set('grant_type', 'delegation')
             // .set('username', model.userName)
@@ -146,7 +146,7 @@ export class HttpService {
 
     }
     useRefreshToken(url: string, refreshToken: string): Observable<any> {
-        debugger
+          
         const body = new HttpParams()
             .set('grant_type', 'refresh_token')
             .set('client_id', 'adminclient')

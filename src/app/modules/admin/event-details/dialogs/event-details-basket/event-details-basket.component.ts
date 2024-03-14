@@ -32,7 +32,7 @@ export class EventDetailsBasketComponent implements OnInit {
   }
 
   onQuantityChange(selectedValue: any): void {
-    debugger
+
   }
 
   addExtraService(): void {
@@ -45,14 +45,15 @@ export class EventDetailsBasketComponent implements OnInit {
     }, 0);
 
     item.id = id + 1;
-    const service = this.selectedProductData?.extraProgram?.find(service => service.recId === this.extraServices[0].serviceId) ?? null;
+    //isism id ile degisicek
+    const service = this.selectedProductData?.extraProgram?.find(service => service.name === this.extraServices[0].serviceId) ?? null;
 
 
     item.price = (service?.price ?? 0) * item.count;
     item.currency = service?.symbol;
     this.extraServiceModelDtoArray.push(item)
     this.extraServices = [];
-    debugger
+
   }
   decrementValue(item: ExstraServiceModelDto): void {
     if (this.extraServices[0].count === 1) {
