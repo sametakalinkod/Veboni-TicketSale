@@ -11,4 +11,6 @@ export class PmsExtraProgramDefinitionsDto {
     htmlList?: string;
     symbol?: string;
     imageList?: string[];
+    programId?: string;
+    count?: number;
 }  

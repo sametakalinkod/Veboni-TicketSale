@@ -22,6 +22,7 @@ export class EventMainResPaymentComponent implements OnInit {
   basketItemDetails = [{
     'eventid': "23423423423fgd",
   }]
+  adultCount: string = '1';
   constructor(
     private _cookieService: CookieService,
     private _dialog: MatDialog
@@ -34,8 +35,8 @@ export class EventMainResPaymentComponent implements OnInit {
     });
   }
 
-  addBasket(): void {
-      
+
+  continue(): void {
     const data = this.selectedProductData;
     // const selectedSession = data?.sessions.find(x => x.programDetailId === selectedSession);
     data?.sessions.filter(x => x.programDetailId === this.selectedSeance)
@@ -52,38 +53,39 @@ export class EventMainResPaymentComponent implements OnInit {
         GlobalService.sweetAlert(sweetAlertDto);
       }
     });
-    // const cookie = this._cookieService.getCookie('basketEvents');
+  }
+  addBasket(): void {
 
-    // const model = [{
-    //   sessionId: this.selectedProductData?.sessions[0].programDetailId,
-    //   image: this.image,
-    //   date: this.selectedProductData?.programEndDate,
-    //   sessionTime: this.selectedSeance,
-    //   childPrice: this.selectedProductData?.sessions[0].childTicketPrice,
-    //   adultPrice: this.selectedProductData?.sessions[0].ticketPrice,
-    //   adultCount: '1',
-    //   title: this.selectedProductData?.sessions[0].remark
-    // }]
-    // if (cookie) {
-    //   const json = JSON.parse(cookie);
-    //   model.push(...json)
-    // }
+    const data = this.selectedProductData;
+    data?.sessions.filter(x => x.programDetailId === this.selectedSeance)
 
-    // this._cookieService.setCookie("basketEvents", JSON.stringify(model), 7);
-    // const sweetAlertDto = new SweetAlertDto(
-    //   'Sepete Eklendi!',
-    //   '',
-    //   SweetalertType.success
-    // );
-    // GlobalService.sweetAlert(sweetAlertDto);
-    // const dialog = this._dialog.open(EventDetailsBasketComponent, {
-    //   disableClose: false,
-    //   data: null
-    // }).afterClosed().subscribe((err) => {
-    //   if (err.status) {
-    //     //this.filtersClick();
-    //   }
-    // });
+    const cookie = this._cookieService.getCookie('basketEvents');
+
+    const model = [{
+      sessionId: this.selectedProductData?.sessions[0].programDetailId,
+      image: this.image,
+      date: this.selectedProductData?.programEndDate,
+      sessionTime: this.selectedSeance,
+      childPrice: this.selectedProductData?.sessions[0].childTicketPrice,
+      adultPrice: this.selectedProductData?.sessions[0].ticketPrice,
+      adultCount: '1',
+      title: this.selectedProductData?.sessions[0].remark,
+      totalPrice: (this.selectedProductData?.sessions[0].ticketPrice ?? 0) * Number(this.adultCount),
+      extraServices: []
+    }]
+    if (cookie) {
+      const json = JSON.parse(cookie);
+      model.push(...json)
+    }
+
+    this._cookieService.setCookie("basketEvents", JSON.stringify(model), 7);
+    const sweetAlertDto = new SweetAlertDto(
+      'Sepete Eklendi!',
+      '',
+      SweetalertType.success
+    );
+    GlobalService.sweetAlert(sweetAlertDto);
+
 
   }
 

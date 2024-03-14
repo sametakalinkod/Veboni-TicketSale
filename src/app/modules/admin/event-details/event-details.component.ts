@@ -53,6 +53,12 @@ export class EventDetailsComponent implements OnInit {
     this._productService.getSessionWithId(recId).subscribe((response) => {
       if (response.isSuccessful) {
         this.selectedProductSessions = response.data;
+
+        //gecici cozum
+
+        this.selectedProductSessions.extraProgram.forEach(element => {
+          element.programId = this.selectedProductSessions.sessions[0].programDetailId;
+        });
         this.image = this.selectedProductSessions.imageList[0];
         const htmlList = JSON.parse(this.selectedProductSessions.htmlList ?? '');
         if (htmlList) {

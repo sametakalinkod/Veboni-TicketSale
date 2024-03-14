@@ -18,11 +18,16 @@
     <h3 class="subTitle">Programme:</h3>
     <div class="main" [innerHtml]=""></div>
   </div>
-  <div class="eventRight">
+  <div class="eventRight" style="justify-content: flex-end;">
     <div class="price-section">
       <!-- Add your price content here -->
       <span class="price">{{ item.price | currency:'':'':'1.2-2'}} {{item.currencyName}}</span>
     </div>
   </div>
-
+  <div class="eventRight">
+    <div class="price-section">
+      <button id="addBasketDetailButton" type="button" (click)="addBasket(item)"
+        class="tt-btn-default addBasketDetailButton"><span>Add to Basket</span></button>
+    </div>
+  </div>
 </div>

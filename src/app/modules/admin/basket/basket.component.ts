@@ -86,7 +86,7 @@ export class BasketComponent implements OnInit {
 
     if (JSON.parse(data ?? '').length > 0) {
       this.basketItems = JSON.parse(data ?? '');
-        
+
 
     }
     this._cookieService.subscribeToCookieChanges().subscribe((newCookieValue: string) => {
@@ -298,14 +298,21 @@ export class BasketComponent implements OnInit {
     });
   }
   onQuantityChange(selectedValue: any, sessionId: string): void {
-      
+
     this.basketItems.find(x => x.sessionId === sessionId).adultCount = selectedValue;
   }
   calculateTotalPrice(percentage?: number): number {
+
     this.basketItems.forEach(item => {
-      // const adultCount = parseInt(item.adultCount, 10);
-      // const totalPrice = (adultCount * item.adultPrice);
-      // item.totalPrice = totalPrice;
+      item.totalPrice = 0;
+      const adultCount = parseInt(item.adultCount, 10);
+      const totalPrice = (adultCount * item.adultPrice);
+      item.totalPrice = totalPrice;
+      if (item.extraServices && item.extraServices.length > 0) {
+        item.extraServices.forEach((extraService: { count: number; price: number; }) => {
+          item.totalPrice += extraService.count * extraService.price;
+        });
+      }
     });
     let grandTotal = this.basketItems.reduce((total, item) => total + item.totalPrice, 0);
     if (percentage) {
@@ -354,4 +361,18 @@ export class BasketComponent implements OnInit {
   }
 
 
+
+
+  routeItem(selectedEvent?: string): void {
+
+    if (selectedEvent) {
+      const encodedGuid = btoa(selectedEvent);
+      const url = this._router.serializeUrl(
+        this._router.createUrlTree([`/eventdetails/${encodedGuid}`])
+      );
+      //open different page
+      // window.open(url, '_blank');
+      window.location.href = url;
+    }
+  }
 }

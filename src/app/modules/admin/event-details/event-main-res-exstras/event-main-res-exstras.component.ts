@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SweetalertType } from 'src/app/common/enums/SweetalertType.enum';
 import { PmsExtraProgramDefinitionsDto } from 'src/app/common/models/PmsExtraProgramDefinitionsDto';
+import { SweetAlertDto } from 'src/app/common/models/SweetAlertDto';
+import { CookieService } from 'src/app/core/services/global/cookie.service';
+import { GlobalService } from 'src/app/core/services/global/global.service';
 
 @Component({
   selector: 'app-event-main-res-exstras',
@@ -9,7 +13,8 @@ import { PmsExtraProgramDefinitionsDto } from 'src/app/common/models/PmsExtraPro
 export class EventMainResExstrasComponent implements OnInit {
   @Input() exstraServices: PmsExtraProgramDefinitionsDto[] | null = null;
 
-  constructor() { }
+  constructor(private _cookieService: CookieService,
+  ) { }
 
   ngOnInit() {
     // const htmlList = JSON.parse(this.selectedProductSessions.htmlList ?? '');
@@ -48,5 +53,38 @@ export class EventMainResExstrasComponent implements OnInit {
     //     }
     //   });
     // }
+  }
+
+  addBasket(item: PmsExtraProgramDefinitionsDto): void {
+    const cookie = this._cookieService.getCookie('basketEvents');
+    if (cookie) {
+      const json = JSON.parse(cookie);
+      const itemArray = json.find((x: { sessionId: any; }) => x.sessionId === item.programId);
+      const extraServices = itemArray.extraServices;
+      if (itemArray) {
+        const extraItem = extraServices.find((x: { recId: string | undefined; }) => x.recId === item.recId);
+        if (extraItem) {
+          extraItem.count += 1;
+        } else {
+          item.count = 1;
+          extraServices.push(item);
+        }
+        const sweetAlertDto = new SweetAlertDto(
+          'Sepete Eklendi!',
+          '',
+          SweetalertType.success
+        );
+        GlobalService.sweetAlert(sweetAlertDto);
+        this._cookieService.setCookie("basketEvents", JSON.stringify(json), 7);
+
+      } else {
+        const sweetAlertDto = new SweetAlertDto(
+          'Aktivite Sepete Eklenmemiş!',
+          '',
+          SweetalertType.error
+        );
+        GlobalService.sweetAlert(sweetAlertDto);
+      }
+    }
   }
 }

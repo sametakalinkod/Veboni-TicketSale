@@ -13,8 +13,7 @@
                   <div class="m-basket__content">
                     <div class="m-basket__contentPanel" *ngFor="let item of basketItems">
                       <div class="m-basket__figure"><a class="m-basket__figureLink">
-                          <img src="{{item?.image ?? ''}}" width="164" height="227"
-                            alt="Playstation 5 1 TB Slim Dijital Edition Oyun Konsolu + 2. PS5 Kol Beyaz"
+                          <img src="{{item?.image ?? ''}}" width="164" height="227" (click)="routeItem(item.sessionId)"
                             class="m-basket__figureImg -lazyImage"></a></div>
                       <div class="m-basket__optionContent">
                         <div class="m-basket__optionHeader"><a class="m-basket__productInfo--link"><strong
@@ -50,7 +49,7 @@
                                   <span class="m-productPrice__salePrice">2.250,00
                                     TL</span>
                                 </div> 
-                              </div> -->
+                              </div>-->
 
                             </div>
                             <div class="m-basket__features">
@@ -72,7 +71,7 @@
                                 style="    width: fit-content;                              ">
                                 <div class="m-basket__variantionName -mobileHide">
                                   Extralar: <span *ngFor="let service of item.extraServices; let last = last">
-                                    {{ service.count }} x {{ service.serviceId }}{{ !last ? ',' : '' }}
+                                    {{ service.count }} x {{ service.name }}{{ !last ? ',' : '' }}
                                   </span>
                                 </div>
                               </div>
