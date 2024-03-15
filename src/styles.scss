@@ -2148,10 +2148,11 @@ input {
 }
 
 .etkinlikdetay .mainEventDetail .eventImg {
-    min-width: 450px;
+    //min-width: 450px;
     float: right;
     position: relative;
     z-index: 999;
+    margin-right: 2em
 }
 
 .seansListWrap {
