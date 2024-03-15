@@ -84,12 +84,14 @@ export class BasketComponent implements OnInit {
 
   ngOnInit(): void {
     const data = this._cookieService.getCookie('basketEvents');
-
-    if (JSON.parse(data ?? '').length > 0) {
+    debugger
+    if (data && JSON.parse(data).length > 0) {
       this.basketItems = JSON.parse(data ?? '');
       this.ticketPrices = this.calculateAllTicketPrices();
       this.extraPrices = this.calculateAllExtrasPrices();
 
+    } else {
+      this._router.navigate(['']);
     }
     this._cookieService.subscribeToCookieChanges().subscribe((newCookieValue: string) => {
       // Handle the event in the header component
@@ -306,10 +308,10 @@ export class BasketComponent implements OnInit {
   calculateTotalPrice(percentage?: number): number {
 
     this.basketItems.forEach(item => {
-      item.totalPrice = 0;
-      const adultCount = parseInt(item.adultCount, 10);
-      const totalPrice = (adultCount * item.adultPrice);
-      item.totalPrice = totalPrice;
+      // item.totalPrice = 0;
+      // const adultCount = parseInt(item.adultCount, 10);
+      // const totalPrice = (adultCount * item.adultPrice);
+      // item.totalPrice = totalPrice;
       if (item.extraServices && item.extraServices.length > 0) {
         item.extraServices.forEach((extraService: { count: number; price: number; }) => {
           item.totalPrice += extraService.count * extraService.price;

@@ -16,7 +16,36 @@
 
   <div class="eventImg">
     <img [src]="image ?? ''" alt="Küçük Prens">
+    <!-- <div class="slideshow-container">
 
+       <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img [src]="image ?? ''" style="width:100%">
+        <div class="text">Caption Text</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img [src]="image ?? ''" style="width:100%">
+        <div class="text">Caption Two</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img [src]="image ?? ''" style="width:100%">
+        <div class="text">Caption Three</div>
+      </div>
+
+       <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+      <a class="next" (click)="plusSlides(1)">&#10095;</a>
+    </div> -->
+    <br>
+
+    <div style="text-align:center">
+      <span class="dot" (click)="currentSlide(1)"></span>
+      <span class="dot" (click)="currentSlide(2)"></span>
+      <span class="dot" (click)="currentSlide(3)"></span>
+    </div>
     <div class="seansListWrap">
       <div class="seansListInner">
         <div class="sessionLbl">
@@ -32,29 +61,76 @@
           <mat-form-field class=" flex-auto form-outline extra-service-material custom-session"
             style="color: black;    width: 48%;">
             <mat-label>Select Seance</mat-label>
-            <mat-select [(ngModel)]="selectedSeance" (ngModelChange)="selectSeance()">
-              <mat-option *ngFor="let option of selectedProductData?.sessions" [value]="option.seanceBegin">{{
+            <mat-select style="color: black !important;" [(ngModel)]="selectedSeance" (ngModelChange)="selectSeance()">
+              <mat-option *ngFor="let option of seancesFiltered" [value]="option.seanceBegin">{{
                 option.seanceBegin }}</mat-option>
 
             </mat-select>
           </mat-form-field>
+          <!-- <mat-form-field class=" flex-auto form-outline extra-service-material custom-session"
+            style="color: black;    width: 48%;">
+            <mat-label>Select Categories</mat-label>
+            <mat-select [(ngModel)]="selectedCategory" (ngModelChange)="selectCategory()">
+              <mat-option *ngFor="let option of selectedProductData?.sessions" [value]="option.seanceBegin">{{
+                option.seanceBegin }}</mat-option>
+
+            </mat-select>
+          </mat-form-field> -->
           <!-- <select class="form-control seansSelect" [(ngModel)]="selectedSeance" (ngModelChange)="selectSeance()">
 
             <option [value]="item.programDetailId" *ngFor="let item of selectedProductData?.sessions">
               {{item.seanceBegin}}
-            </option> 
+            </option>
           </select> -->
+        </div>
+        <div class="sessions">
+          <mat-form-field class=" flex-auto form-outline extra-service-material custom-session"
+            style="color: black;width: 48%;">
+            <mat-label>Select Categories</mat-label>
+            <mat-select [(ngModel)]="selectedCategory" (ngModelChange)="selectCategory()">
+              <mat-option *ngFor="let option of categoriesFiltered" [value]="option.programDetailId">{{
+                option.detailRemark }}</mat-option>
 
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="sessions">
+          <mat-form-field class="extra-service-material" style="padding-right: 1em;">
 
+            <mat-label>Adult</mat-label>
+            <input style="padding-left: 83px" id="extraservice-increment" matInput type="number" min="1"
+              [(ngModel)]="adultCount">
+            <button mat-button class="minus-btn" (click)="decrementValue( 'adult')">-</button>
+            <button mat-button class="plus-btn" (click)="incrementValue(  'adult')">+</button>
+          </mat-form-field>
+          <mat-form-field class="extra-service-material">
+            <mat-label>Child</mat-label>
+            <input style="padding-left: 83px" id="child-increment" matInput type="number" min="0"
+              [(ngModel)]="childCount">
+            <button mat-button class="minus-btn" (click)="decrementValue( 'child')">-</button>
+            <button mat-button class="plus-btn" (click)="incrementValue(  'child')">+</button>
+          </mat-form-field>
 
         </div>
-        <div class="row">
-          <button type="button" (click)="continue()" class="tt-btn-default"><span>Continue</span></button>
-          <button id="addBasketDetailButton" type="button" (click)="addBasket()"
-            class="tt-btn-default addBasketDetailButton"><span>Add to Basket</span></button>
-          <!-- <button type="button" onclick="biletAl()" class="tt-btn-default"><span>Buy a ticket</span></button>
-          <button id="addBasketDetailButton" type="button" (click)="addBasket()"
+        <div class="row" style="justify-content: space-between">
+          <div class="d-flex justify-content-end price">
+            <h5 class="total-text" style="font-weight: 100;font-size: 27px;font-style: oblique;">Total: <span
+                class="price text-success" style="font-weight: 400;font-style: normal;">{{getTotalPrice() |
+                currency:'':'':'1.2-2'}}
+                ₺</span>
+              <span class="currency-symbol" *ngIf="currPrice">( {{currPrice | currency:'':'':'1.2-2'}}
+                {{currSymbol}})</span>
+
+            </h5>
+          </div>
+          <div class="flex-end-side" style="margin-right: 3em">
+            <!-- <button type="button" (click)="continue()" class="tt-btn-default"><span>Continue</span></button> -->
+            <button id="addBasketDetailButton" type="button" (click)="addBasket()"
+              class="tt-btn-default addBasketDetailButton"><span>Add to Basket</span></button>
+            <!-- <button type="button" onclick="biletAl()" class="tt-btn-default"><span>Buy a ticket</span></button>
+            <button id="addBasketDetailButton" type="button" (click)="addBasket()"
             class="tt-btn-default addBasketDetailButton"><span>Add to Basket</span></button> -->
+          </div>
         </div>
       </div>
     </div>

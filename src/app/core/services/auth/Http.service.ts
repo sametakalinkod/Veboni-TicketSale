@@ -32,40 +32,40 @@ export class HttpService {
             'Authorization': `Bearer ${token}`
         });
 
-        // if (token) {
-        //     const headers = new HttpHeaders({
-        //         'Content-Type': 'application/json',
-        //         'Authorization': `Bearer ${token}`
-        //     });
+        if (token) {
+            const headers = new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            });
 
-        //     return this.httpClient.post(fullUrl, body, { headers }).pipe(
-        //         map((response: any) => {
-        //             return response;
-        //         }),
-        //         catchError((error: any) => {
-        //             if (error.status === 401) {
-        //                 localStorage.removeItem('accessToken');
-        //                 return throwError('Unauthorized access. Please login again.');
-        //             }
-        //             // For other errors, propagate the error to the subscriber
-        //             return throwError(error);
-        //         })
-        //     );
-        // } else {
-        //     // If token is not present, make the request without Authorization header
+            return this.httpClient.post(fullUrl, body, { headers }).pipe(
+                map((response: any) => {
+                    return response;
+                }),
+                catchError((error: any) => {
+                    if (error.status === 401) {
+                        localStorage.removeItem('accessToken');
+                        return error;
+                    }
+                    // For other errors, propagate the error to the subscriber
+                    return error;
+                })
+            );
+        } else {
+            // If token is not present, make the request without Authorization header
 
-        // }
+        }
 
         return this.httpClient.post(fullUrl, body, { headers }).pipe(
             catchError(async (error: any) => {
                 if (error.status === 401) {
-                      
+
                     localStorage.removeItem('accessToken');
                     const signIn = await this.signIn(adminEndPoints.auth.signIn, window.location.origin.toLowerCase());
-                    return throwError('Unauthorized access. Please login again.');
+                    return error;
                 }
                 // For other errors, propagate the error to the subscriber
-                return throwError(error);
+                return error;
             })
         );
     }
@@ -126,7 +126,7 @@ export class HttpService {
     }
 
     signIn(url: string, domain: string): Observable<any> {
-          
+
         const body = new HttpParams()
             .set('grant_type', 'delegation')
             // .set('username', model.userName)
@@ -146,7 +146,7 @@ export class HttpService {
 
     }
     useRefreshToken(url: string, refreshToken: string): Observable<any> {
-          
+
         const body = new HttpParams()
             .set('grant_type', 'refresh_token')
             .set('client_id', 'adminclient')

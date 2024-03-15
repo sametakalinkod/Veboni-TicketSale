@@ -23,10 +23,12 @@ export class PmsSalesForecastReportDto {
     seanceBegin?: TimeOnly;
     seanceEnd?: TimeOnly;
     imageList: string[] = [];
+    currAdultPrice?: number;
+    currChildPrice?: number;
 }
 
-interface TimeOnly {
-    hours: number;
-    minutes: number;
-    seconds: number;
+export class TimeOnly {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
 }

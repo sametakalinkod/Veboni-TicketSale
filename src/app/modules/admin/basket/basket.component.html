@@ -17,10 +17,13 @@
                             class="m-basket__figureImg -lazyImage"></a></div>
                       <div class="m-basket__optionContent">
                         <div class="m-basket__optionHeader"><a class="m-basket__productInfo--link"><strong
-                              class="m-basket__productInfoCategory">{{item?.remark ?? ''}}</strong> <span
-                              class="m-basket__productInfoName">{{ item.date | date:'EEEE, MMM dd,
-                              yyyy' }}
-                              {{ item.sessionTime}}</span></a> </div>
+                              class="m-basket__productInfoCategory">{{item?.remark ?? ''}}</strong>
+                            <span class="m-basket__productInfoName">{{ item.date | date:'EEEE, MMM dd, yyyy' }} </span>
+                            <span class="m-basket__productInfoName"> {{ item.sessionTime}}</span>
+                            <span class="m-basket__productInfoName"> {{ item.category}}</span>
+                          </a>
+                        </div>
+
                         <div class="m-basket__productTools">
                           <div class="m-basket__productInfo">
                             <div class="m-basket__productPrice">
@@ -56,6 +59,9 @@
                               <div class="m-basket__quantity">
                                 <div class="m-basket__variantionName -mobileHide">
                                   Yetişkin: {{item.adultCount}}
+                                </div>
+                                <div class="m-basket__variantionName -mobileHide" *ngIf="item.childCount !== 0">
+                                  Çocuk: {{item.childCount}}
                                 </div>
                                 <div class="m-select -small" *ngIf="false"><select #quantitySelect
                                     id="quantitySelect0-key-0" value="1" [(ngModel)]="item.adultcount"
