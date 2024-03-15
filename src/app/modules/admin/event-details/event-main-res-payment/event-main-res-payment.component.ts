@@ -34,6 +34,7 @@ export class EventMainResPaymentComponent implements OnInit, AfterViewChecked {
   viewChecked = false;
   currPrice?: number;
   currSymbol?: string;
+  totalPrice: number = 0;
   constructor(
     private _cookieService: CookieService,
     private _dialog: MatDialog
@@ -57,7 +58,7 @@ export class EventMainResPaymentComponent implements OnInit, AfterViewChecked {
           return false;
         }
       });
-      debugger
+
       this.viewChecked = true;
     }
 
@@ -98,6 +99,27 @@ export class EventMainResPaymentComponent implements OnInit, AfterViewChecked {
     //data?.sessions.filter(x => x.programDetailId === this.selectedSeance)
 
 
+    if (!this.selectedSeance) {
+      const sweetAlertDto = new SweetAlertDto(
+        'LÜtfen bir seans seçiniz!',
+        '',
+        SweetalertType.error
+      );
+      GlobalService.sweetAlert(sweetAlertDto);
+      return;
+    }
+
+
+    if (!this.selectedCategory) {
+      const sweetAlertDto = new SweetAlertDto(
+        'LÜtfen bir kategori seçiniz!',
+        '',
+        SweetalertType.error
+      );
+      GlobalService.sweetAlert(sweetAlertDto);
+      return;
+    }
+
     const filterArea: string = this.selectedCategory?.toString() ?? '';
     const selectedEvent = this.categoriesFiltered.find(x => x.programDetailId && x.programDetailId === filterArea) ?? null;
     if (!selectedEvent) {
@@ -108,7 +130,8 @@ export class EventMainResPaymentComponent implements OnInit, AfterViewChecked {
 
     const model = [{
       category: selectedEvent.detailRemark,
-      sessionId: selectedEvent.programDetailId,
+      sessionId: selectedEvent.productId,
+      itemRecId: selectedEvent.programDetailId,
       image: this.image,
       date: this.selectedProductData?.programEndDate,
       sessionTime: this.selectedSeance,
@@ -117,7 +140,8 @@ export class EventMainResPaymentComponent implements OnInit, AfterViewChecked {
       adultCount: this.adultCount,
       childCount: this.childCount,
       title: selectedEvent.remark,
-      totalPrice: this.getTotalPrice(),
+      totalPrice: this.totalPrice,
+
       extraServices: []
     }]
     if (cookie) {
@@ -148,11 +172,16 @@ export class EventMainResPaymentComponent implements OnInit, AfterViewChecked {
     if (this.selectedSeance && this.selectedProductData) {
       this.categoriesFiltered = this.selectedProductData.sessions.filter(session => session.seanceBegin === this.selectedSeance);
     }
+    this.selectedCategory = undefined;
+    this.getTotalPrice();
+
   }
   selectCategory(): void {
 
     console.log('Selected Seance:', this.selectCategory);
     // You can perform further actions here based on the selected value
+    this.getTotalPrice();
+
   }
 
 
@@ -165,7 +194,7 @@ export class EventMainResPaymentComponent implements OnInit, AfterViewChecked {
   }
 
   showSlides(n: number) {
-    debugger
+
     let i: number;
     const slides = document.getElementsByClassName("mySlides") as HTMLCollectionOf<HTMLElement>;
     const dots = document.getElementsByClassName("dot") as HTMLCollectionOf<HTMLElement>;
@@ -194,6 +223,7 @@ export class EventMainResPaymentComponent implements OnInit, AfterViewChecked {
     } else if (item === 'child' && this.childCount > 0) {
       this.childCount -= 1;
     }
+    this.getTotalPrice();
   }
   incrementValue(item: string): void {
     if (item === 'adult') {
@@ -201,11 +231,12 @@ export class EventMainResPaymentComponent implements OnInit, AfterViewChecked {
     } else if (item === 'child') {
       this.childCount += 1;
     }
+    this.getTotalPrice();
   }
 
-  getTotalPrice(): number {
+  getTotalPrice(): void {
     if (this.selectedSeance && this.selectedCategory) {
-      debugger
+
       const filterArea: string = this.selectedCategory?.toString() ?? '';
       const selectedEvent = this.categoriesFiltered.find(x => x.programDetailId && x.programDetailId === filterArea) ?? null;
 
@@ -219,9 +250,10 @@ export class EventMainResPaymentComponent implements OnInit, AfterViewChecked {
         const adult = selectedEvent?.currAdultPrice ?? 0;
         const child = selectedEvent?.currChildPrice ?? 0;
 
-        return (adult * this.adultCount) + (child * this.childCount);
+        this.totalPrice = (adult * this.adultCount) + (child * this.childCount);
+        return;
       }
     }
-    return 0;
+    this.totalPrice = 0;
   }
 }

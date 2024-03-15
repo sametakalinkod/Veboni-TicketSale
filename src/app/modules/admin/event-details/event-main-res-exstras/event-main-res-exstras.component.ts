@@ -56,6 +56,7 @@ export class EventMainResExstrasComponent implements OnInit {
   }
 
   addBasket(item: PmsExtraProgramDefinitionsDto): void {
+     debugger
     const cookie = this._cookieService.getCookie('basketEvents');
     if (cookie) {
       const json = JSON.parse(cookie);

@@ -13,7 +13,7 @@
                   <div class="m-basket__content">
                     <div class="m-basket__contentPanel" *ngFor="let item of basketItems">
                       <div class="m-basket__figure"><a class="m-basket__figureLink">
-                          <img src="{{item?.image ?? ''}}" width="164" height="227" (click)="routeItem(item.sessionId)"
+                          <img src="{{item?.image ?? ''}}" width="164" height="227" (click)="routeItem(item.itemRecId)"
                             class="m-basket__figureImg -lazyImage"></a></div>
                       <div class="m-basket__optionContent">
                         <div class="m-basket__optionHeader"><a class="m-basket__productInfo--link"><strong

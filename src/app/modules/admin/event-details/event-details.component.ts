@@ -57,7 +57,7 @@ export class EventDetailsComponent implements OnInit {
         //gecici cozum
 
         this.selectedProductSessions.extraProgram.forEach(element => {
-          element.programId = this.selectedProductSessions.sessions[0].programDetailId;
+          element.programId = this.selectedProductSessions.sessions[0].productId;
         });
         this.image = this.selectedProductSessions.imageList[0];
         const htmlList = JSON.parse(this.selectedProductSessions.htmlList ?? '');

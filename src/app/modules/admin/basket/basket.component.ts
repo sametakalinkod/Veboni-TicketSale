@@ -84,7 +84,7 @@ export class BasketComponent implements OnInit {
 
   ngOnInit(): void {
     const data = this._cookieService.getCookie('basketEvents');
-    debugger
+
     if (data && JSON.parse(data).length > 0) {
       this.basketItems = JSON.parse(data ?? '');
       this.ticketPrices = this.calculateAllTicketPrices();
@@ -306,24 +306,26 @@ export class BasketComponent implements OnInit {
     this.basketItems.find(x => x.sessionId === sessionId).adultCount = selectedValue;
   }
   calculateTotalPrice(percentage?: number): number {
-
+    let totalPrice = 0;
     this.basketItems.forEach(item => {
+      debugger
       // item.totalPrice = 0;
       // const adultCount = parseInt(item.adultCount, 10);
       // const totalPrice = (adultCount * item.adultPrice);
       // item.totalPrice = totalPrice;
+      totalPrice += item.totalPrice;
       if (item.extraServices && item.extraServices.length > 0) {
         item.extraServices.forEach((extraService: { count: number; price: number; }) => {
-          item.totalPrice += extraService.count * extraService.price;
+          totalPrice += extraService.count * extraService.price;
         });
       }
     });
-    let grandTotal = this.basketItems.reduce((total, item) => total + item.totalPrice, 0);
+    // let grandTotal = this.basketItems.reduce((total, item) => total + item.totalPrice, 0);
     if (percentage) {
-      grandTotal = grandTotal * percentage / 100;
+      totalPrice = totalPrice * percentage / 100;
     }
 
-    return grandTotal;
+    return totalPrice;
 
     //return totalPrice * parseInt(this.selectedValue, 10);
   }
@@ -368,7 +370,6 @@ export class BasketComponent implements OnInit {
 
 
   routeItem(selectedEvent?: string): void {
-
     if (selectedEvent) {
       const encodedGuid = btoa(selectedEvent);
       const url = this._router.serializeUrl(
@@ -381,13 +382,13 @@ export class BasketComponent implements OnInit {
   }
   calculateAllTicketPrices(): number {
     this.basketItems.forEach(item => {
-      item.total = 0;
-      const adultCount = parseInt(item.adultCount, 10);
-      const totalPrice = (adultCount * item.adultPrice);
-      item.total = totalPrice;
+      // item.total = 0;
+      // const adultCount = parseInt(item.adultCount, 10);
+      // const totalPrice = (adultCount * item.adultPrice);
+      // item.total = totalPrice;
 
     });
-    let grandTotal = this.basketItems.reduce((total, item) => total + item.total, 0);
+    let grandTotal = this.basketItems.reduce((total, item) => total + item.totalPrice, 0);
 
     return grandTotal;
 
@@ -397,16 +398,16 @@ export class BasketComponent implements OnInit {
     let total = 0;
 
     this.basketItems.forEach(item => {
-      item.total = 0;
+      // item.total = 0;
       if (item.extraServices && item.extraServices.length > 0) {
         item.extraServices.forEach((extraService: { count: number; price: number; }) => {
-          item.total += extraService.count * extraService.price;
+          total += extraService.count * extraService.price;
         });
       }
     });
     let grandTotal = this.basketItems.reduce((total, item) => total + item.total, 0);
+    debugger
 
-
-    return grandTotal;
+    return total;
   }
 }
