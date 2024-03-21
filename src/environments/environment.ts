@@ -5,9 +5,8 @@ export const environment = {
     // apiUrl: 'http://localhost:5010/services/',
     // hubUrl: 'http://localhost:5015/serverHub',
 
-
-    apiUrl: 'https://testapi.veboni.com/services/',
-    hubUrl: 'https://hubtest.veboni.com/serverHub',
+    apiUrl: 'https://betaapi.veboni.com/services/',
+    hubUrl: 'https://hubbeta.veboni.com/serverHub',
 
     appName: 'veboni',
     env: 'dev',
