@@ -58,10 +58,51 @@
                             <div class="m-basket__features">
                               <div class="m-basket__quantity">
                                 <div class="m-basket__variantionName -mobileHide">
-                                  Yetişkin: {{item.adultCount}}
+                                  Yetişkin:
                                 </div>
-                                <div class="m-basket__variantionName -mobileHide" *ngIf="item.childCount !== 0">
-                                  Çocuk: {{item.childCount}}
+                                <div class="center">
+                                  <div class="number-input-wrapper">
+                                    <div class="number-input adultCount" [attr.min]="min" [attr.max]="max"
+                                      [attr.step]="step" [attr.value]="value">
+                                      <button type="button" class="btn-input"
+                                        (click)="decrease(item.itemRecId , 'adultCount')">
+                                        <mat-icon class="btn-amount">remove</mat-icon>
+                                      </button>
+                                      <div class="value">
+                                        <span class="number">{{ item.adultCount }}</span>
+                                        <!-- <span class="text">Quantity</span> -->
+                                      </div>
+                                      <button type="button" class="btn-input"
+                                        (click)="increase(item.itemRecId, 'adultCount')">
+                                        <mat-icon class="btn-amount">add</mat-icon>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+
+                                <div style="margin-left: 0.4em;" class="m-basket__variantionName -mobileHide">
+                                  Çocuk:
+                                </div>
+                                <div class="center">
+                                  <div class="number-input-wrapper">
+                                    <div class="number-input childCount" [attr.min]="min" [attr.max]="max"
+                                      [attr.step]="step" [attr.value]="value">
+                                      <button type="button" class="btn-input"
+                                        (click)="decrease(item.itemRecId , 'childCount')">
+                                        <mat-icon class="btn-amount">remove</mat-icon>
+                                      </button>
+                                      <div class="value">
+                                        <span class="number">{{ item.childCount }}</span>
+                                        <!-- <span class="text">Quantity</span> -->
+                                      </div>
+                                      <button type="button" class="btn-input"
+                                        (click)="increase(item.itemRecId, 'childCount')">
+                                        <mat-icon class="btn-amount">add</mat-icon>
+                                      </button>
+                                    </div>
+                                  </div>
                                 </div>
                                 <div class="m-select -small" *ngIf="false"><select #quantitySelect
                                     id="quantitySelect0-key-0" value="1" [(ngModel)]="item.adultcount"

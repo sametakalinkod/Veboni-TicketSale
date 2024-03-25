@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SweetalertType } from 'src/app/common/enums/SweetalertType.enum';
@@ -74,12 +74,29 @@ export class BasketComponent implements OnInit {
   quantityOptions: number[] = [1, 2, 3, 4, 5, 6]; // Define array of quantity options
   ticketPrices: number = 0;
   extraPrices: number = 0;
+
+
+
+
+
+
+  min: number = 0;
+  max: number = 20;
+  step: number = 1;
+  value: number = 0;
+
+
+
+
+
+
   constructor(
     private _formBuilder: FormBuilder,
     //private _translocoService: TranslocoService,
     private _paymentService: PaymentService,
     private _router: Router,
-    private _cookieService: CookieService
+    private _cookieService: CookieService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
@@ -409,5 +426,36 @@ export class BasketComponent implements OnInit {
     debugger
 
     return total;
+  }
+
+
+  increase(id: string, column: string) {
+    let item = this.basketItems.find(x => x.itemRecId === id);
+
+    if (item) {
+      if (item[column] < this.max && item[column] + this.step <= this.max) {
+        item[column] += this.step;
+      }
+    }
+    this.applyRotation('20deg', column); // Apply rotation after increasing
+  }
+
+  decrease(id: string, column: string) {
+    let item = this.basketItems.find(x => x.itemRecId === id);
+
+    if (item) {
+      if (item[column] > this.min && item[column] - this.step >= this.min) {
+        item[column] -= this.step;
+      }
+    }
+    this.applyRotation('-20deg', column); // Apply rotation after decreasing
+  }
+
+  private applyRotation(rotation: string, id: string) {
+    const column = "." + id;
+    this.renderer.setStyle(document.querySelector(column), 'transform', `rotateY(${rotation})`);
+    setTimeout(() => {
+      this.renderer.setStyle(document.querySelector(column), 'transform', 'rotateY(0deg)');
+    }, 150);
   }
 }

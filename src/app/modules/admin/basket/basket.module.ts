@@ -10,6 +10,7 @@ import { TranslocoRootModule } from 'src/app/common/modules/transloco/transloco-
   imports: [
     CommonModule,
     MaterialModule,
+    MatIconModule
     // TranslocoModule,
     //TranslocoRootModule
   ],
