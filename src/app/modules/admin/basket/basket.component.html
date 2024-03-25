@@ -114,9 +114,8 @@
 
                                   </select></div>
                               </div>
-                              <div class="m-basket__quantity"
-                                style="    width: fit-content;                              ">
-                                <div class="m-basket__variantionName -mobileHide">
+                              <div class="m-basket__quantity" style="width: fit-content;padding-top: 0.5em;">
+                                <div class="m-basket__variantionName -mobileHide" *ngIf="item.extraServices.length >0">
                                   Extralar: <span *ngFor="let service of item.extraServices; let last = last">
                                     {{ service.count }} x {{ service.name }}{{ !last ? ',' : '' }}
                                   </span>
