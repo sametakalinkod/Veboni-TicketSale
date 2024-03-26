@@ -590,10 +590,123 @@
     </div>
 
   </div> -->
+  <div class="subpages-inner section-marker indexPageMaker custom-slider">
+    <div class="options">
+      <div class="option" appSliderAnimated *ngFor="let item of activeProductsSlider"
+        [style.background-image]="item.imageList && item.imageList.length > 0 ? 'url(' + item.imageList[0] + ')' : null">
+        <div class="shadow">
+        </div>
+        <div class="label">
+          <div class="icon">
+            <i class="fa fa-user"></i>
+          </div>
+          <div class="info">
+            <div class="main">Blo</div>
+            <div class="sub">Omu</div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="option" appSliderAnimated
+        style="background-image:url(https://66.media.tumblr.com/6fb397d822f4f9f4596dff2085b18f2e/tumblr_nzsvb4p6xS1qho82wo1_1280.jpg)">
+        <div class="shadow">
 
+        </div>
+        <div class="label">
+          <div class="icon">
+            <i class="fa fa-eercast"></i>
+          </div>
+          <div class="info">
+            <div class="main">Blo</div>
+            <div class="sub">Omu</div>
+          </div>
+        </div>
+      </div>
+      <div class="option" appSliderAnimated
+        style="background-image:url(https://66.media.tumblr.com/6fb397d822f4f9f4596dff2085b18f2e/tumblr_nzsvb4p6xS1qho82wo1_1280.jpg)">
+        <div class="shadow">
+
+        </div>
+        <div class="label">
+          <div class="icon">
+            <i class="fa fa-eercast"></i>
+          </div>
+          <div class="info">
+            <div class="main">Blo</div>
+            <div class="sub">Omu</div>
+          </div>
+        </div>
+      </div>
+      <div class="option" appSliderAnimated
+        style="background-image:url(https://66.media.tumblr.com/6fb397d822f4f9f4596dff2085b18f2e/tumblr_nzsvb4p6xS1qho82wo1_1280.jpg)">
+        <div class="shadow">
+
+        </div>
+        <div class="label">
+          <div class="icon">
+            <i class="fa fa-eercast"></i>
+          </div>
+          <div class="info">
+            <div class="main">Blo</div>
+            <div class="sub">Omu</div>
+          </div>
+        </div>
+      </div>
+      <div class="option" appSliderAnimated
+        style="background-image:url(https://66.media.tumblr.com/6fb397d822f4f9f4596dff2085b18f2e/tumblr_nzsvb4p6xS1qho82wo1_1280.jpg)">
+        <div class="shadow">
+
+        </div>
+        <div class="label">
+          <div class="icon">
+            <i class="fa fa-eercast"></i>
+          </div>
+          <div class="info">
+            <div class="main">Blo</div>
+            <div class="sub">Omu</div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="subpages-inner custom-form" [formGroup]="productSearchForm">
+    <div class="row form-row">
+      <div class="col-4">
+        <mat-form-field class="example-full-width">
+          <mat-label>Event</mat-label>
+          <input type="text" [formControlName]="'product'" matInput [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+            (optionSelected)="onProductChange($event)">
+            <mat-option *ngFor="let item of activeProducts" [value]="item">{{item.remark}}</mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field style="background: none; width: 100%;" class="w-auto d-flex">
+          <!-- <mat-label>{{'Checkin'| transloco}} - {{'Checkout'| transloco}}</mat-label> -->
+          <mat-label> Checkin - Checkout </mat-label>
+          <mat-date-range-input [rangePicker]="checkin" [min]="minDate">
+            <input matInput matStartDate placeholder="Start date" id="startdate" formControlName="start">
+            <input matInput matEndDate placeholder="End date" id="enddate" formControlName="end"
+              (dateChange)="dateRangeChange()">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matIconSuffix [for]="checkin" id="datePicker"></mat-datepicker-toggle>
+          <mat-date-range-picker #checkin></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <div class="col-2">
+        <button mat-raised-button color="primary" (click)="searchEvents()" class=" common-button"
+          style="margin-right: 5px;height: 70%;">
+          <mat-icon matSuffix>search</mat-icon>
+          Search
+        </button>
+      </div>
+    </div>
+
+  </div>
   <div class="section-wrapper subpages-inner section-marker">
 
-    <div class="purpleLight"></div>
+    <!-- <div class="purpleLight"></div> -->
     <div class="light"></div>
     <div class="container container-fluid-lg">
       <h2 class="ttcalendar__month-title text-center">All Events</h2>

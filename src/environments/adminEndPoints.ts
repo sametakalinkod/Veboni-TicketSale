@@ -53,6 +53,7 @@ export const adminEndPoints = {
     },
     products: {
         getPmsSalesForecastReport: 'pms/Operation/GetPmsSalesForecastReport',
+        getValidProgramsByDate: 'pms/Operation/GetValidProgramsByDate',
         getSessionWithId: 'pms/Operation/GetPmsProductSessionsById'
     },
     common: {

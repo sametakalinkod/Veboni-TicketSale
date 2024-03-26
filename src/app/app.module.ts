@@ -24,6 +24,8 @@ import { EmptyComponent } from './empty/empty.component';
 import { NgxUiLoaderConfig, SPINNER, POSITION, PB_DIRECTION, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
+import { register } from 'swiper/element/bundle';
+register();
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -93,8 +95,27 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     // MatStepperModule,
     TranslocoRootModule
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  providers: [
+    // httpLoader,
+    // {
+    //   provide: TRANSLOCO_CONFIG,
+    //   useValue: {
+    //     prodMode: environment.production,
+    //     availableLangs: [{ id: 'en', label: 'English' }, { id: 'es', label: 'Spanish' }],
+    //     reRenderOnLangChange: true,
+    //     fallbackLang: 'es',
+    //     defaultLang: 'en',
+    //     missingHandler: {
+    //       useFallbackTranslation: true
+    //     },
+    //     scopeMapping: {
+    //       'todos-page': 'todos',
+    //       'transpilers/messageformat': 'mf'
+    //     }
+    //   } as TranslocoConfig
+    // }
+
+  ], bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

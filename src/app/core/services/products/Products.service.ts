@@ -18,6 +18,10 @@ export class ProductsService {
     return this._http.post(adminEndPoints.products.getPmsSalesForecastReport, data);
   }
 
+  getActiveEvents(data: any): Observable<any> {
+    return this._http.post(adminEndPoints.products.getValidProgramsByDate, data);
+  }
+
   getSessionWithId(data: any): Observable<any> {
     return this._http.post(adminEndPoints.products.getSessionWithId, data);
   }
