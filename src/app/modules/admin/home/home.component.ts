@@ -138,6 +138,7 @@ export class HomeComponent implements OnInit {
       });
 
     this.getActiveEvents();
+    this.searchEvents();
     //this.getProductsAndSessions();
   }
 
