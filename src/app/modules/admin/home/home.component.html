@@ -593,7 +593,7 @@
   <div class="subpages-inner section-marker indexPageMaker custom-slider">
     <div class="options">
       <div class="option" appSliderAnimated *ngFor="let item of activeProductsSlider"
-        [style.background-image]="item && item.imageList && item.imageList[0] && item.imageList[0] != null ? item.imageList[0] : 'https://panel.cosmosticket.net//upload/activity/20231230114015401.jpg'">
+        [style.background-image]="(item && item.imageList && item.imageList[0] && item.imageList[0] !== null) ? 'url(' + item.imageList[0] + ')' : 'url(https://panel.cosmosticket.net//upload/activity/20231230114015401.jpg)'">
         <div class="shadow">
         </div>
         <div class="label">
@@ -670,8 +670,8 @@
   </div>
 
   <div class="subpages-inner custom-form" [formGroup]="productSearchForm">
-    <div class="row form-row">
-      <div class="col-4">
+    <div class="row form-row" id="home-form">
+      <div class="col-4 center-common">
         <mat-form-field class="example-full-width">
           <mat-label>Event</mat-label>
           <input type="text" [formControlName]="'product'" matInput [matAutocomplete]="auto">
@@ -681,7 +681,7 @@
           </mat-autocomplete>
         </mat-form-field>
       </div>
-      <div class="col-6">
+      <div class="col-6 center-common">
         <mat-form-field style="background: none; width: 100%;" class="w-auto d-flex">
           <!-- <mat-label>{{'Checkin'| transloco}} - {{'Checkout'| transloco}}</mat-label> -->
           <mat-label> Checkin - Checkout </mat-label>
@@ -694,9 +694,9 @@
           <mat-date-range-picker #checkin></mat-date-range-picker>
         </mat-form-field>
       </div>
-      <div class="col-2">
+      <div class="col-2 center-common">
         <button mat-raised-button color="primary" (click)="searchEvents()" class=" common-button"
-          style="margin-right: 5px;height: 70%;">
+          style="margin-right: 5px;height: 100%;width: 100%;">
           <mat-icon matSuffix>search</mat-icon>
           Search
         </button>

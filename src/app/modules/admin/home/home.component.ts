@@ -197,12 +197,15 @@ export class HomeComponent implements OnInit {
 
   getActiveEvents(): void {
     const model = {
-      beginDate: new Date()
+      beginDate: new Date(),
+      produceType: 3
     }
     this._productService.getActiveEvents(model).subscribe({
       next: (response: ActionResponse<any>) => {
         this.activeProducts = response.data;
-
+        //   if (this.activeProducts[0] !== undefined && this.activeProducts[0].imageList !== undefined) {
+        //     this.activeProducts[0].imageList = [];
+        // }
         this.activeProductsSlider = this.activeProducts.slice(0, 5);
 
         // If the number of items is less than 5, repeat the items until you have 5 items
