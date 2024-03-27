@@ -1937,7 +1937,8 @@ h6 {
     position: relative;
     text-align: center;
     padding: 2px;
-    background: linear-gradient(270deg, #ff1a43 -.23%, #7b16d9 100%);
+    //background: linear-gradient(270deg, #ff1a43 -.23%, #7b16d9 100%);
+    background: linear-gradient(270deg, #3486e9 -0.23%, #df41ef 100%);
     box-shadow: none;
     border: none;
     outline: 0;
@@ -2061,7 +2062,8 @@ input {
 
 .eventDetail {
     background: #fff;
-    background: #2e4769;
+    // background: #2e4769;
+    background: #28273b;
 }
 
 .mainEventDetail {
