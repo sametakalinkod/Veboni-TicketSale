@@ -593,7 +593,7 @@
   <div class="subpages-inner section-marker indexPageMaker custom-slider">
     <div class="options">
       <div class="option" appSliderAnimated *ngFor="let item of activeProductsSlider"
-        [style.background-image]="item && item.imageList && item.imageList[0] ? item.imageList[0] : 'https://panel.cosmosticket.net//upload/activity/20231230114015401.jpg'">
+        [style.background-image]="item && item.imageList && item.imageList[0] && item.imageList[0] != null ? item.imageList[0] : 'https://panel.cosmosticket.net//upload/activity/20231230114015401.jpg'">
         <div class="shadow">
         </div>
         <div class="label">
