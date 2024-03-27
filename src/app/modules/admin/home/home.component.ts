@@ -291,7 +291,7 @@ export class HomeComponent implements OnInit {
 
   searchEvents(): void {
     const model = {
-      produceId: (this.productSearchForm.controls["product"]?.value ?? this.productSearchForm.controls["product"]?.value.programId) ?? null,
+      produceId: ((this.productSearchForm.controls["product"]?.value && this.productSearchForm.controls["product"]?.value != '') ?? this.productSearchForm.controls["product"]?.value.programId) ?? null,
       beginDate: new Date(this.productSearchForm.controls["start"]?.value),
       produceType: 3,
       endDate: new Date(this.productSearchForm.controls["end"]?.value)
