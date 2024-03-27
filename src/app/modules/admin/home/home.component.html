@@ -672,7 +672,7 @@
   <div class="subpages-inner custom-form" [formGroup]="productSearchForm">
     <div class="row form-row" id="home-form">
       <div class="col-4 center-common">
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Event</mat-label>
           <input type="text" [formControlName]="'product'" matInput [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
@@ -682,7 +682,7 @@
         </mat-form-field>
       </div>
       <div class="col-6 center-common">
-        <mat-form-field style="background: none; width: 100%;" class="w-auto d-flex">
+        <mat-form-field style="background: none; width: 100%;" class="w-auto d-flex" appearance="outline">
           <!-- <mat-label>{{'Checkin'| transloco}} - {{'Checkout'| transloco}}</mat-label> -->
           <mat-label> Checkin - Checkout </mat-label>
           <mat-date-range-input [rangePicker]="checkin" [min]="minDate">

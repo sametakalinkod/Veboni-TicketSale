@@ -662,13 +662,45 @@
 }
 
 .form-row {
-    margin: 0px 19em;
-
+    margin: 0px 7em;
+    border-radius: 10px;
+    border: 0.1em solid white;
+    padding: 27px 53px;
+    background-color: #ffffff05;
 }
 
 
 ::ng-deep #home-form .mat-mdc-form-field-subscript-wrapper {
     display: none !important;
+}
+
+::ng-deep #home-form .mdc-notched-outline .mdc-notched-outline__leading {
+    border-color: rgb(255 255 255 / 36%) !important;
+}
+
+
+::ng-deep #home-form .mdc-notched-outline__trailing {
+    border-color: rgb(255 255 255 / 36%) !important;
+}
+
+::ng-deep #home-form .mdc-notched-outline__notch {
+    border-color: rgb(255 255 255 / 36%) !important;
+}
+
+
+
+::ng-deep #home-form .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: rgb(255 255 255 / 87%);
+}
+
+::ng-deep #home-form .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-floating-label--float-above {
+    color: rgb(255 255 255);
+}
+
+::ng-deep #home-form .mat-datepicker-toggle {
+    pointer-events: auto;
+    color: rgb(255 255 255 / 54%);
 }
 
 .center-common {
